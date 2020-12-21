@@ -1,0 +1,53 @@
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+Sys.setlocale(category = "LC_ALL", locale = "us")
+bdb <- read.csv("C:/Users/JGH0208/Desktop/20182/응용R/data/기본DB(검진,건강설문,영양).csv")
+a <- data.frame(bdb$BP1,bdb$mh_stress,bdb$Total_slp_wd)
+bdb$BO1 <- gsub(6,"na",bdb$BO1)
+bdb$BO1 <- gsub(7,"na",bdb$BO1)
+bdb$BO1 <- gsub(8,"na",bdb$BO1)
+bdb$BO1 <- gsub(9,"na",bdb$BO1)
+bldf <- data.frame(bdb$ID_fam,bdb$BO1,bdb$L_BR_FQ,bdb$L_LN_FQ,bdb$L_DN_FQ)
+```
+
+# 모든 변수에 결측치 없는 데이터 추출
+```{r}
+df_nomiss2 <- na.omit(bldf)  
+bldfn <- df_nomiss2   
+nw <- which(bldfn$bdb.BO1 == "na")
+bldfn <- bldfn[-nw, ]
+
+bldfn$bdb.L_BR_FQ <- gsub(1,6,bldfn$bdb.L_BR_FQ)
+bldfn$bdb.L_BR_FQ <- gsub(3,1.5,bldfn$bdb.L_BR_FQ)
+bldfn$bdb.L_BR_FQ <- gsub(2,3.5,bldfn$bdb.L_BR_FQ)
+bldfn$bdb.L_BR_FQ <- gsub(4,0,bldfn$bdb.L_BR_FQ)
+bldfn$bdb.L_LN_FQ <- gsub(1,6,bldfn$bdb.L_LN_FQ)
+bldfn$bdb.L_LN_FQ <- gsub(3,1.5,bldfn$bdb.L_LN_FQ)
+bldfn$bdb.L_LN_FQ <- gsub(2,3.5,bldfn$bdb.L_LN_FQ)
+bldfn$bdb.L_LN_FQ <- gsub(4,0,bldfn$bdb.L_LN_FQ)
+bldfn$bdb.L_DN_FQ <- gsub(1,6,bldfn$bdb.L_DN_FQ)
+bldfn$bdb.L_DN_FQ <- gsub(3,1.5,bldfn$bdb.L_DN_FQ)
+bldfn$bdb.L_DN_FQ <- gsub(2,3.5,bldfn$bdb.L_DN_FQ)
+bldfn$bdb.L_DN_FQ <- gsub(4,0,bldfn$bdb.L_DN_FQ)
+
+brt <- table(bldfn$bdb.L_BR_FQ,bldfn$bdb.BO1,dnn = c("Breakfast","Health"))[,-6]
+brt2 <- as.data.frame(brt)
+brtp <- round(prop.table(brt, margin = 1) * 100, digits = 1)
+brtp <- addmargins(brtp)
+lnt <- table(bldfn$bdb.L_LN_FQ,bldfn$bdb.BO1)[,-1]
+dnt <- table(bldfn$bdb.L_DN_FQ,bldfn$bdb.BO1)[,-1]
+
+library(ggplot2)
+library(knitr)
+source("C:/Users/JGH0208/Desktop/20182/응용R/응용R/R/mosaic_gg.R")
+library(RColorBrewer)
+
+```
+
+

@@ -1,0 +1,1588 @@
+---
+title: "Rprogectexam"
+author: "20173250 정경현"
+date: "2018년 12월 12일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+fdbd <- read.csv("C:/Users/JGH0208/Desktop/20182/응용R/data/식품섭취빈도조사 data.csv")
+fdbd9n <- read.csv("C:/Users/JGH0208/Desktop/20182/응용R/data/식품섭취빈도조사99NA.csv")
+#sndri <- sum(fdbd$FF_RICE,fdbd$FF_BARLEY,fdbd$FF_BIBIM,fdbd$FF_GIMBAB,fdbd$FF_CURRY,fdbd$FF_INSTNO,fdbd$FF_WHNO,fdbd$FF_CHNO,fdbd$FF_BUNO,na.rm = T)
+```
+#RICE&NOODLE
+```{r}
+fdbd9n$FF_RICE <- gsub(1,0,fdbd9n$FF_RICE)
+fdbd9n$FF_RICE <- gsub(2,1/90,fdbd9n$FF_RICE)
+fdbd9n$FF_RICE <- gsub(3,2.5/90,fdbd9n$FF_RICE)
+fdbd9n$FF_RICE <- gsub(4,4/90,fdbd9n$FF_RICE)
+fdbd9n$FF_RICE <- gsub(5,12/90,fdbd9n$FF_RICE)
+fdbd9n$FF_RICE <- gsub(6,22/90,fdbd9n$FF_RICE)
+fdbd9n$FF_RICE <- gsub(7,30/90,fdbd9n$FF_RICE)
+fdbd9n$FF_RICE <- gsub(8,60/90,fdbd9n$FF_RICE)
+fdbd9n$FF_RICE <- gsub(9,90/90,fdbd9n$FF_RICE)
+```
+
+```{r}
+fdbd9n$FF_BARLEY <- gsub(1,0,fdbd9n$FF_BARLEY)
+fdbd9n$FF_BARLEY <- gsub(2,1/90,fdbd9n$FF_BARLEY)
+fdbd9n$FF_BARLEY <- gsub(3,2.5/90,fdbd9n$FF_BARLEY)
+fdbd9n$FF_BARLEY <- gsub(4,4/90,fdbd9n$FF_BARLEY)
+fdbd9n$FF_BARLEY <- gsub(5,12/90,fdbd9n$FF_BARLEY)
+fdbd9n$FF_BARLEY <- gsub(6,22/90,fdbd9n$FF_BARLEY)
+fdbd9n$FF_BARLEY <- gsub(7,30/90,fdbd9n$FF_BARLEY)
+fdbd9n$FF_BARLEY <- gsub(8,60/90,fdbd9n$FF_BARLEY)
+fdbd9n$FF_BARLEY <- gsub(9,90/90,fdbd9n$FF_BARLEY)
+```
+
+```{r}
+fdbd9n$FF_BIBIM <- gsub(1,0,fdbd9n$FF_BIBIM)
+fdbd9n$FF_BIBIM <- gsub(2,1/90,fdbd9n$FF_BIBIM)
+fdbd9n$FF_BIBIM <- gsub(3,2.5/90,fdbd9n$FF_BIBIM)
+fdbd9n$FF_BIBIM <- gsub(4,4/90,fdbd9n$FF_BIBIM)
+fdbd9n$FF_BIBIM <- gsub(5,12/90,fdbd9n$FF_BIBIM)
+fdbd9n$FF_BIBIM <- gsub(6,22/90,fdbd9n$FF_BIBIM)
+fdbd9n$FF_BIBIM <- gsub(7,30/90,fdbd9n$FF_BIBIM)
+fdbd9n$FF_BIBIM <- gsub(8,60/90,fdbd9n$FF_BIBIM)
+fdbd9n$FF_BIBIM <- gsub(9,90/90,fdbd9n$FF_BIBIM)
+```
+
+```{r}
+fdbd9n$FF_GIMBAB <- gsub(1,0,fdbd9n$FF_GIMBAB)
+fdbd9n$FF_GIMBAB <- gsub(2,1/90,fdbd9n$FF_GIMBAB)
+fdbd9n$FF_GIMBAB <- gsub(3,2.5/90,fdbd9n$FF_GIMBAB)
+fdbd9n$FF_GIMBAB <- gsub(4,4/90,fdbd9n$FF_GIMBAB)
+fdbd9n$FF_GIMBAB <- gsub(5,12/90,fdbd9n$FF_GIMBAB)
+fdbd9n$FF_GIMBAB <- gsub(6,22/90,fdbd9n$FF_GIMBAB)
+fdbd9n$FF_GIMBAB <- gsub(7,30/90,fdbd9n$FF_GIMBAB)
+fdbd9n$FF_GIMBAB <- gsub(8,60/90,fdbd9n$FF_GIMBAB)
+fdbd9n$FF_GIMBAB <- gsub(9,90/90,fdbd9n$FF_GIMBAB)
+```
+
+```{r}
+fdbd9n$FF_CURRY <- gsub(1,0,fdbd9n$FF_CURRY)
+fdbd9n$FF_CURRY <- gsub(2,1/90,fdbd9n$FF_CURRY)
+fdbd9n$FF_CURRY <- gsub(3,2.5/90,fdbd9n$FF_CURRY)
+fdbd9n$FF_CURRY <- gsub(4,4/90,fdbd9n$FF_CURRY)
+fdbd9n$FF_CURRY <- gsub(5,12/90,fdbd9n$FF_CURRY)
+fdbd9n$FF_CURRY <- gsub(6,22/90,fdbd9n$FF_CURRY)
+fdbd9n$FF_CURRY <- gsub(7,30/90,fdbd9n$FF_CURRY)
+fdbd9n$FF_CURRY <- gsub(8,60/90,fdbd9n$FF_CURRY)
+fdbd9n$FF_CURRY <- gsub(9,90/90,fdbd9n$FF_CURRY)
+```
+
+```{r}
+fdbd9n$FF_INSTNO <- gsub(1,0,fdbd9n$FF_INSTNO)
+fdbd9n$FF_INSTNO <- gsub(2,1/90,fdbd9n$FF_INSTNO)
+fdbd9n$FF_INSTNO <- gsub(3,2.5/90,fdbd9n$FF_INSTNO)
+fdbd9n$FF_INSTNO <- gsub(4,4/90,fdbd9n$FF_INSTNO)
+fdbd9n$FF_INSTNO <- gsub(5,12/90,fdbd9n$FF_INSTNO)
+fdbd9n$FF_INSTNO <- gsub(6,22/90,fdbd9n$FF_INSTNO)
+fdbd9n$FF_INSTNO <- gsub(7,30/90,fdbd9n$FF_INSTNO)
+fdbd9n$FF_INSTNO <- gsub(8,60/90,fdbd9n$FF_INSTNO)
+fdbd9n$FF_INSTNO <- gsub(9,90/90,fdbd9n$FF_INSTNO)
+```
+
+```{r}
+fdbd9n$FF_WHNO <- gsub(1,0,fdbd9n$FF_WHNO)
+fdbd9n$FF_WHNO <- gsub(2,1/90,fdbd9n$FF_WHNO)
+fdbd9n$FF_WHNO <- gsub(3,2.5/90,fdbd9n$FF_WHNO)
+fdbd9n$FF_WHNO <- gsub(4,4/90,fdbd9n$FF_WHNO)
+fdbd9n$FF_WHNO <- gsub(5,12/90,fdbd9n$FF_WHNO)
+fdbd9n$FF_WHNO <- gsub(6,22/90,fdbd9n$FF_WHNO)
+fdbd9n$FF_WHNO <- gsub(7,30/90,fdbd9n$FF_WHNO)
+fdbd9n$FF_WHNO <- gsub(8,60/90,fdbd9n$FF_WHNO)
+fdbd9n$FF_WHNO <- gsub(9,90/90,fdbd9n$FF_WHNO)
+```
+
+```{r}
+fdbd9n$FF_CHNO <- gsub(1,0,fdbd9n$FF_CHNO)
+fdbd9n$FF_CHNO <- gsub(2,1/90,fdbd9n$FF_CHNO)
+fdbd9n$FF_CHNO <- gsub(3,2.5/90,fdbd9n$FF_CHNO)
+fdbd9n$FF_CHNO <- gsub(4,4/90,fdbd9n$FF_CHNO)
+fdbd9n$FF_CHNO <- gsub(5,12/90,fdbd9n$FF_CHNO)
+fdbd9n$FF_CHNO <- gsub(6,22/90,fdbd9n$FF_CHNO)
+fdbd9n$FF_CHNO <- gsub(7,30/90,fdbd9n$FF_CHNO)
+fdbd9n$FF_CHNO <- gsub(8,60/90,fdbd9n$FF_CHNO)
+fdbd9n$FF_CHNO <- gsub(9,90/90,fdbd9n$FF_CHNO)
+```
+
+```{r}
+fdbd9n$FF_BUNO <- gsub(1,0,fdbd9n$FF_BUNO)
+fdbd9n$FF_BUNO <- gsub(2,1/90,fdbd9n$FF_BUNO)
+fdbd9n$FF_BUNO <- gsub(3,2.5/90,fdbd9n$FF_BUNO)
+fdbd9n$FF_BUNO <- gsub(4,4/90,fdbd9n$FF_BUNO)
+fdbd9n$FF_BUNO <- gsub(5,12/90,fdbd9n$FF_BUNO)
+fdbd9n$FF_BUNO <- gsub(6,22/90,fdbd9n$FF_BUNO)
+fdbd9n$FF_BUNO <- gsub(7,30/90,fdbd9n$FF_BUNO)
+fdbd9n$FF_BUNO <- gsub(8,60/90,fdbd9n$FF_BUNO)
+fdbd9n$FF_BUNO <- gsub(9,90/90,fdbd9n$FF_BUNO)
+```
+
+```{r}
+fdbd9n$FF_RICE <- as.numeric(fdbd9n$FF_RICE)
+fdbd9n$FF_BARLEY <- as.numeric(fdbd9n$FF_BARLEY)
+fdbd9n$FF_BIBIM <- as.numeric(fdbd9n$FF_BIBIM)
+fdbd9n$FF_GIMBAB <- as.numeric(fdbd9n$FF_GIMBAB)
+fdbd9n$FF_CURRY <- as.numeric(fdbd9n$FF_CURRY)
+fdbd9n$FF_INSTNO <- as.numeric(fdbd9n$FF_INSTNO)
+fdbd9n$FF_WHNO <- as.numeric(fdbd9n$FF_WHNO)
+fdbd9n$FF_CHNO <- as.numeric(fdbd9n$FF_CHNO)
+fdbd9n$FF_BUNO <- as.numeric(fdbd9n$FF_BUNO)
+
+sndri <- sum(fdbd9n$FF_RICE,fdbd9n$FF_BARLEY,fdbd9n$FF_BIBIM,fdbd9n$FF_GIMBAB,fdbd9n$FF_CURRY,fdbd9n$FF_INSTNO,fdbd9n$FF_WHNO,fdbd9n$FF_CHNO,fdbd9n$FF_BUNO,na.rm = T)
+sndri
+sndri/3351
+s1 <- 90*0.8061
+```
+#BREAD
+```{r}
+fdbd9n$FF_DUMP <- gsub(1,0,fdbd9n$FF_DUMP)
+fdbd9n$FF_DUMP <- gsub(2,1/90,fdbd9n$FF_DUMP)
+fdbd9n$FF_DUMP <- gsub(3,2.5/90,fdbd9n$FF_DUMP)
+fdbd9n$FF_DUMP <- gsub(4,4/90,fdbd9n$FF_DUMP)
+fdbd9n$FF_DUMP <- gsub(5,12/90,fdbd9n$FF_DUMP)
+fdbd9n$FF_DUMP <- gsub(6,22/90,fdbd9n$FF_DUMP)
+fdbd9n$FF_DUMP <- gsub(7,30/90,fdbd9n$FF_DUMP)
+fdbd9n$FF_DUMP <- gsub(8,60/90,fdbd9n$FF_DUMP)
+fdbd9n$FF_DUMP <- gsub(9,90/90,fdbd9n$FF_DUMP)
+```
+
+```{r}
+fdbd9n$FF_BRE <- gsub(1,0,fdbd9n$FF_BRE)
+fdbd9n$FF_BRE <- gsub(2,1/90,fdbd9n$FF_BRE)
+fdbd9n$FF_BRE <- gsub(3,2.5/90,fdbd9n$FF_BRE)
+fdbd9n$FF_BRE <- gsub(4,4/90,fdbd9n$FF_BRE)
+fdbd9n$FF_BRE <- gsub(5,12/90,fdbd9n$FF_BRE)
+fdbd9n$FF_BRE <- gsub(6,22/90,fdbd9n$FF_BRE)
+fdbd9n$FF_BRE <- gsub(7,30/90,fdbd9n$FF_BRE)
+fdbd9n$FF_BRE <- gsub(8,60/90,fdbd9n$FF_BRE)
+fdbd9n$FF_BRE <- gsub(9,90/90,fdbd9n$FF_BRE)
+```
+
+```{r}
+fdbd9n$FF_RB_BRE <- gsub(1,0,fdbd9n$FF_RB_BRE)
+fdbd9n$FF_RB_BRE <- gsub(2,1/90,fdbd9n$FF_RB_BRE)
+fdbd9n$FF_RB_BRE <- gsub(3,2.5/90,fdbd9n$FF_RB_BRE)
+fdbd9n$FF_RB_BRE <- gsub(4,4/90,fdbd9n$FF_RB_BRE)
+fdbd9n$FF_RB_BRE <- gsub(5,12/90,fdbd9n$FF_RB_BRE)
+fdbd9n$FF_RB_BRE <- gsub(6,22/90,fdbd9n$FF_RB_BRE)
+fdbd9n$FF_RB_BRE <- gsub(7,30/90,fdbd9n$FF_RB_BRE)
+fdbd9n$FF_RB_BRE <- gsub(8,60/90,fdbd9n$FF_RB_BRE)
+fdbd9n$FF_RB_BRE <- gsub(9,90/90,fdbd9n$FF_RB_BRE)
+```
+
+```{r}
+fdbd9n$FF_CAKE <- gsub(1,0,fdbd9n$FF_CAKE)
+fdbd9n$FF_CAKE <- gsub(2,1/90,fdbd9n$FF_CAKE)
+fdbd9n$FF_CAKE <- gsub(3,2.5/90,fdbd9n$FF_CAKE)
+fdbd9n$FF_CAKE <- gsub(4,4/90,fdbd9n$FF_CAKE)
+fdbd9n$FF_CAKE <- gsub(5,12/90,fdbd9n$FF_CAKE)
+fdbd9n$FF_CAKE <- gsub(6,22/90,fdbd9n$FF_CAKE)
+fdbd9n$FF_CAKE <- gsub(7,30/90,fdbd9n$FF_CAKE)
+fdbd9n$FF_CAKE <- gsub(8,60/90,fdbd9n$FF_CAKE)
+fdbd9n$FF_CAKE <- gsub(9,90/90,fdbd9n$FF_CAKE)
+```
+
+```{r}
+fdbd9n$FF_PIZZA <- gsub(1,0,fdbd9n$FF_PIZZA)
+fdbd9n$FF_PIZZA <- gsub(2,1/90,fdbd9n$FF_PIZZA)
+fdbd9n$FF_PIZZA <- gsub(3,2.5/90,fdbd9n$FF_PIZZA)
+fdbd9n$FF_PIZZA <- gsub(4,4/90,fdbd9n$FF_PIZZA)
+fdbd9n$FF_PIZZA <- gsub(5,12/90,fdbd9n$FF_PIZZA)
+fdbd9n$FF_PIZZA <- gsub(6,22/90,fdbd9n$FF_PIZZA)
+fdbd9n$FF_PIZZA <- gsub(7,30/90,fdbd9n$FF_PIZZA)
+fdbd9n$FF_PIZZA <- gsub(8,60/90,fdbd9n$FF_PIZZA)
+fdbd9n$FF_PIZZA <- gsub(9,90/90,fdbd9n$FF_PIZZA)
+```
+
+```{r}
+fdbd9n$FF_HAMBER <- gsub(1,0,fdbd9n$FF_HAMBER)
+fdbd9n$FF_HAMBER <- gsub(2,1/90,fdbd9n$FF_HAMBER)
+fdbd9n$FF_HAMBER <- gsub(3,2.5/90,fdbd9n$FF_HAMBER)
+fdbd9n$FF_HAMBER <- gsub(4,4/90,fdbd9n$FF_HAMBER)
+fdbd9n$FF_HAMBER <- gsub(5,12/90,fdbd9n$FF_HAMBER)
+fdbd9n$FF_HAMBER <- gsub(6,22/90,fdbd9n$FF_HAMBER)
+fdbd9n$FF_HAMBER <- gsub(7,30/90,fdbd9n$FF_HAMBER)
+fdbd9n$FF_HAMBER <- gsub(8,60/90,fdbd9n$FF_HAMBER)
+fdbd9n$FF_HAMBER <- gsub(9,90/90,fdbd9n$FF_HAMBER)
+```
+
+
+```{r}
+fdbd9n$FF_RCAK <- gsub(1,0,fdbd9n$FF_RCAK)
+fdbd9n$FF_RCAK <- gsub(2,1/90,fdbd9n$FF_RCAK)
+fdbd9n$FF_RCAK <- gsub(3,2.5/90,fdbd9n$FF_RCAK)
+fdbd9n$FF_RCAK <- gsub(4,4/90,fdbd9n$FF_RCAK)
+fdbd9n$FF_RCAK <- gsub(5,12/90,fdbd9n$FF_RCAK)
+fdbd9n$FF_RCAK <- gsub(6,22/90,fdbd9n$FF_RCAK)
+fdbd9n$FF_RCAK <- gsub(7,30/90,fdbd9n$FF_RCAK)
+fdbd9n$FF_RCAK <- gsub(8,60/90,fdbd9n$FF_RCAK)
+fdbd9n$FF_RCAK <- gsub(9,90/90,fdbd9n$FF_RCAK)
+```
+
+```{r}
+fdbd9n$FF_F_RCAK <- gsub(1,0,fdbd9n$FF_F_RCAK)
+fdbd9n$FF_F_RCAK <- gsub(2,1/90,fdbd9n$FF_F_RCAK)
+fdbd9n$FF_F_RCAK <- gsub(3,2.5/90,fdbd9n$FF_F_RCAK)
+fdbd9n$FF_F_RCAK <- gsub(4,4/90,fdbd9n$FF_F_RCAK)
+fdbd9n$FF_F_RCAK <- gsub(5,12/90,fdbd9n$FF_F_RCAK)
+fdbd9n$FF_F_RCAK <- gsub(6,22/90,fdbd9n$FF_F_RCAK)
+fdbd9n$FF_F_RCAK <- gsub(7,30/90,fdbd9n$FF_F_RCAK)
+fdbd9n$FF_F_RCAK <- gsub(8,60/90,fdbd9n$FF_F_RCAK)
+fdbd9n$FF_F_RCAK <- gsub(9,90/90,fdbd9n$FF_F_RCAK)
+```
+
+
+```{r}
+fdbd9n$FF_CEREAL <- gsub(1,0,fdbd9n$FF_CEREAL)
+fdbd9n$FF_CEREAL <- gsub(2,1/90,fdbd9n$FF_CEREAL)
+fdbd9n$FF_CEREAL <- gsub(3,2.5/90,fdbd9n$FF_CEREAL)
+fdbd9n$FF_CEREAL <- gsub(4,4/90,fdbd9n$FF_CEREAL)
+fdbd9n$FF_CEREAL <- gsub(5,12/90,fdbd9n$FF_CEREAL)
+fdbd9n$FF_CEREAL <- gsub(6,22/90,fdbd9n$FF_CEREAL)
+fdbd9n$FF_CEREAL <- gsub(7,30/90,fdbd9n$FF_CEREAL)
+fdbd9n$FF_CEREAL <- gsub(8,60/90,fdbd9n$FF_CEREAL)
+fdbd9n$FF_CEREAL <- gsub(9,90/90,fdbd9n$FF_CEREAL)
+```
+
+```{r}
+fdbd9n$FF_DUMP <- as.numeric(fdbd9n$FF_DUMP)
+fdbd9n$FF_BRE <- as.numeric(fdbd9n$FF_BRE)
+fdbd9n$FF_RB_BRE <- as.numeric(fdbd9n$FF_RB_BRE)
+fdbd9n$FF_CAKE <- as.numeric(fdbd9n$FF_CAKE)
+fdbd9n$FF_PIZZA <- as.numeric(fdbd9n$FF_PIZZA)
+fdbd9n$FF_HAMBER <- as.numeric(fdbd9n$FF_HAMBER)
+fdbd9n$FF_RCAK <- as.numeric(fdbd9n$FF_RCAK)
+fdbd9n$FF_F_RCAK <- as.numeric(fdbd9n$FF_F_RCAK)
+fdbd9n$FF_CEREAL <- as.numeric(fdbd9n$FF_CEREAL)
+
+sbre <- sum(fdbd9n$FF_DUMP,fdbd9n$FF_BRE,fdbd9n$FF_RB_BRE,fdbd9n$FF_CAKE,fdbd9n$FF_PIZZA,fdbd9n$FF_HAMBER,fdbd9n$FF_RCAK,fdbd9n$FF_F_RCAK,fdbd9n$FF_CEREAL,na.rm = T)
+sbre/3351
+s2 <- 90*0.0738
+```
+#찌개반찬류
+```{r}
+fdbd9n$FF_T_BEEF <- gsub(1,0,fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_BEEF <- gsub(2,1/90,fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_BEEF <- gsub(3,2.5/90,fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_BEEF <- gsub(4,4/90,fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_BEEF <- gsub(5,12/90,fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_BEEF <- gsub(6,22/90,fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_BEEF <- gsub(7,30/90,fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_BEEF <- gsub(8,60/90,fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_BEEF <- gsub(9,90/90,fdbd9n$FF_T_BEEF)
+```
+
+```{r}
+fdbd9n$FF_T_POTA <- gsub(1,0,fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_POTA <- gsub(2,1/90,fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_POTA <- gsub(3,2.5/90,fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_POTA <- gsub(4,4/90,fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_POTA <- gsub(5,12/90,fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_POTA <- gsub(6,22/90,fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_POTA <- gsub(7,30/90,fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_POTA <- gsub(8,60/90,fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_POTA <- gsub(9,90/90,fdbd9n$FF_T_POTA)
+```
+
+```{r}
+fdbd9n$FF_T_LOAC <- gsub(1,0,fdbd9n$FF_T_LOAC)
+fdbd9n$FF_T_LOAC <- gsub(2,1/90,fdbd9n$FF_T_LOAC)
+fdbd9n$FF_T_LOAC <- gsub(3,2.5/90,fdbd9n$FF_T_LOAC)
+fdbd9n$FF_T_LOAC <- gsub(4,4/90,fdbd9n$FF_T_LOAC)
+fdbd9n$FF_T_LOAC <- gsub(5,12/90,fdbd9n$FF_T_LOAC)
+fdbd9n$FF_T_LOAC <- gsub(6,22/90,fdbd9n$FF_T_LOAC)
+fdbd9n$FF_T_LOAC <- gsub(7,30/90,fdbd9n$FF_T_LOAC)
+fdbd9n$FF_T_LOAC <- gsub(8,60/90,fdbd9n$FF_T_LOAC)
+fdbd9n$FF_T_LOAC <- gsub(9,90/90,fdbd9n$FF_T_LOAC)
+```
+
+```{r}
+fdbd9n$FF_J_POLL <- gsub(1,0,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(2,1/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(3,2.5/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(4,4/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(5,12/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(6,22/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(7,30/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(8,60/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(9,90/90,fdbd9n$FF_J_POLL)
+```
+
+```{r}
+fdbd9n$FF_J_POLL <- gsub(1,0,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(2,1/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(3,2.5/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(4,4/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(5,12/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(6,22/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(7,30/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(8,60/90,fdbd9n$FF_J_POLL)
+fdbd9n$FF_J_POLL <- gsub(9,90/90,fdbd9n$FF_J_POLL)
+```
+
+```{r}
+fdbd9n$FF_S_SWED <- gsub(1,0,fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_SWED <- gsub(2,1/90,fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_SWED <- gsub(3,2.5/90,fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_SWED <- gsub(4,4/90,fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_SWED <- gsub(5,12/90,fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_SWED <- gsub(6,22/90,fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_SWED <- gsub(7,30/90,fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_SWED <- gsub(8,60/90,fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_SWED <- gsub(9,90/90,fdbd9n$FF_S_SWED)
+```
+
+```{r}
+fdbd9n$FF_S_BEEF <- gsub(1,0,fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_BEEF <- gsub(2,1/90,fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_BEEF <- gsub(3,2.5/90,fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_BEEF <- gsub(4,4/90,fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_BEEF <- gsub(5,12/90,fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_BEEF <- gsub(6,22/90,fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_BEEF <- gsub(7,30/90,fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_BEEF <- gsub(8,60/90,fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_BEEF <- gsub(9,90/90,fdbd9n$FF_S_BEEF)
+```
+
+```{r}
+fdbd9n$FF_S_POLL <- gsub(1,0,fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_POLL <- gsub(2,1/90,fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_POLL <- gsub(3,2.5/90,fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_POLL <- gsub(4,4/90,fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_POLL <- gsub(5,12/90,fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_POLL <- gsub(6,22/90,fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_POLL <- gsub(7,30/90,fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_POLL <- gsub(8,60/90,fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_POLL <- gsub(9,90/90,fdbd9n$FF_S_POLL)
+```
+
+```{r}
+fdbd9n$FF_S_SOYP <- gsub(1,0,fdbd9n$FF_S_SOYP)
+fdbd9n$FF_S_SOYP <- gsub(2,1/90,fdbd9n$FF_S_SOYP)
+fdbd9n$FF_S_SOYP <- gsub(3,2.5/90,fdbd9n$FF_S_SOYP)
+fdbd9n$FF_S_SOYP <- gsub(4,4/90,fdbd9n$FF_S_SOYP)
+fdbd9n$FF_S_SOYP <- gsub(5,12/90,fdbd9n$FF_S_SOYP)
+fdbd9n$FF_S_SOYP <- gsub(6,22/90,fdbd9n$FF_S_SOYP)
+fdbd9n$FF_S_SOYP <- gsub(7,30/90,fdbd9n$FF_S_SOYP)
+fdbd9n$FF_S_SOYP <- gsub(8,60/90,fdbd9n$FF_S_SOYP)
+fdbd9n$FF_S_SOYP <- gsub(9,90/90,fdbd9n$FF_S_SOYP)
+```
+
+```{r}
+fdbd9n$FF_J_SOYP <- gsub(1,0,fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_SOYP <- gsub(2,1/90,fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_SOYP <- gsub(3,2.5/90,fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_SOYP <- gsub(4,4/90,fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_SOYP <- gsub(5,12/90,fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_SOYP <- gsub(6,22/90,fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_SOYP <- gsub(7,30/90,fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_SOYP <- gsub(8,60/90,fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_SOYP <- gsub(9,90/90,fdbd9n$FF_J_SOYP)
+```
+
+```{r}
+fdbd9n$FF_J_KIMC <- gsub(1,0,fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_KIMC <- gsub(2,1/90,fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_KIMC <- gsub(3,2.5/90,fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_KIMC <- gsub(4,4/90,fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_KIMC <- gsub(5,12/90,fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_KIMC <- gsub(6,22/90,fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_KIMC <- gsub(7,30/90,fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_KIMC <- gsub(8,60/90,fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_KIMC <- gsub(9,90/90,fdbd9n$FF_J_KIMC)
+```
+
+```{r}
+fdbd9n$FF_J_BUDA <- gsub(1,0,fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BUDA <- gsub(2,1/90,fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BUDA <- gsub(3,2.5/90,fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BUDA <- gsub(4,4/90,fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BUDA <- gsub(5,12/90,fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BUDA <- gsub(6,22/90,fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BUDA <- gsub(7,30/90,fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BUDA <- gsub(8,60/90,fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BUDA <- gsub(9,90/90,fdbd9n$FF_J_BUDA)
+```
+
+```{r}
+fdbd9n$FF_J_BNCD <- gsub(1,0,fdbd9n$FF_J_BNCD)
+fdbd9n$FF_J_BNCD <- gsub(2,1/90,fdbd9n$FF_J_BNCD)
+fdbd9n$FF_J_BNCD <- gsub(3,2.5/90,fdbd9n$FF_J_BNCD)
+fdbd9n$FF_J_BNCD <- gsub(4,4/90,fdbd9n$FF_J_BNCD)
+fdbd9n$FF_J_BNCD <- gsub(5,12/90,fdbd9n$FF_J_BNCD)
+fdbd9n$FF_J_BNCD <- gsub(6,22/90,fdbd9n$FF_J_BNCD)
+fdbd9n$FF_J_BNCD <- gsub(7,30/90,fdbd9n$FF_J_BNCD)
+fdbd9n$FF_J_BNCD <- gsub(8,60/90,fdbd9n$FF_J_BNCD)
+fdbd9n$FF_J_BNCD <- gsub(9,90/90,fdbd9n$FF_J_BNCD)
+```
+
+```{r}
+fdbd9n$FF_BNCURD <- gsub(1,0,fdbd9n$FF_BNCURD)
+fdbd9n$FF_BNCURD <- gsub(2,1/90,fdbd9n$FF_BNCURD)
+fdbd9n$FF_BNCURD <- gsub(3,2.5/90,fdbd9n$FF_BNCURD)
+fdbd9n$FF_BNCURD <- gsub(4,4/90,fdbd9n$FF_BNCURD)
+fdbd9n$FF_BNCURD <- gsub(5,12/90,fdbd9n$FF_BNCURD)
+fdbd9n$FF_BNCURD <- gsub(6,22/90,fdbd9n$FF_BNCURD)
+fdbd9n$FF_BNCURD <- gsub(7,30/90,fdbd9n$FF_BNCURD)
+fdbd9n$FF_BNCURD <- gsub(8,60/90,fdbd9n$FF_BNCURD)
+fdbd9n$FF_BNCURD <- gsub(9,90/90,fdbd9n$FF_BNCURD)
+```
+
+```{r}
+fdbd9n$FF_S_BEAN <- gsub(1,0,fdbd9n$FF_S_BEAN)
+fdbd9n$FF_S_BEAN <- gsub(2,1/90,fdbd9n$FF_S_BEAN)
+fdbd9n$FF_S_BEAN <- gsub(3,2.5/90,fdbd9n$FF_S_BEAN)
+fdbd9n$FF_S_BEAN <- gsub(4,4/90,fdbd9n$FF_S_BEAN)
+fdbd9n$FF_S_BEAN <- gsub(5,12/90,fdbd9n$FF_S_BEAN)
+fdbd9n$FF_S_BEAN <- gsub(6,22/90,fdbd9n$FF_S_BEAN)
+fdbd9n$FF_S_BEAN <- gsub(7,30/90,fdbd9n$FF_S_BEAN)
+fdbd9n$FF_S_BEAN <- gsub(8,60/90,fdbd9n$FF_S_BEAN)
+fdbd9n$FF_S_BEAN <- gsub(9,90/90,fdbd9n$FF_S_BEAN)
+```
+
+```{r}
+fdbd9n$FF_F_EGG <- gsub(1,0,fdbd9n$FF_F_EGG )
+fdbd9n$FF_F_EGG <- gsub(2,1/90,fdbd9n$FF_F_EGG )
+fdbd9n$FF_F_EGG <- gsub(3,2.5/90,fdbd9n$FF_F_EGG )
+fdbd9n$FF_F_EGG <- gsub(4,4/90,fdbd9n$FF_F_EGG )
+fdbd9n$FF_F_EGG <- gsub(5,12/90,fdbd9n$FF_F_EGG )
+fdbd9n$FF_F_EGG <- gsub(6,22/90,fdbd9n$FF_F_EGG )
+fdbd9n$FF_F_EGG <- gsub(7,30/90,fdbd9n$FF_F_EGG )
+fdbd9n$FF_F_EGG <- gsub(8,60/90,fdbd9n$FF_F_EGG )
+fdbd9n$FF_F_EGG <- gsub(9,90/90,fdbd9n$FF_F_EGG )
+```
+
+```{r}
+fdbd9n$FF_S_EGG <- gsub(1,0,fdbd9n$FF_S_EGG )
+fdbd9n$FF_S_EGG <- gsub(2,1/90,fdbd9n$FF_S_EGG )
+fdbd9n$FF_S_EGG <- gsub(3,2.5/90,fdbd9n$FF_S_EGG )
+fdbd9n$FF_S_EGG <- gsub(4,4/90,fdbd9n$FF_S_EGG )
+fdbd9n$FF_S_EGG <- gsub(5,12/90,fdbd9n$FF_S_EGG )
+fdbd9n$FF_S_EGG <- gsub(6,22/90,fdbd9n$FF_S_EGG )
+fdbd9n$FF_S_EGG <- gsub(7,30/90,fdbd9n$FF_S_EGG )
+fdbd9n$FF_S_EGG <- gsub(8,60/90,fdbd9n$FF_S_EGG )
+fdbd9n$FF_S_EGG <- gsub(9,90/90,fdbd9n$FF_S_EGG )
+```
+
+```{r}
+fdbd9n$FF_T_BEEF <- as.numeric(fdbd9n$FF_T_BEEF)
+fdbd9n$FF_T_POTA <- as.numeric(fdbd9n$FF_T_POTA)
+fdbd9n$FF_T_LOAC <- as.numeric(fdbd9n$FF_T_LOAC)
+fdbd9n$FF_J_POLL <- as.numeric(fdbd9n$FF_J_POLL)
+fdbd9n$FF_S_SWED <- as.numeric(fdbd9n$FF_S_SWED)
+fdbd9n$FF_S_BEEF <- as.numeric(fdbd9n$FF_S_BEEF)
+fdbd9n$FF_S_POLL <- as.numeric(fdbd9n$FF_S_POLL)
+fdbd9n$FF_S_SOYP <- as.numeric(fdbd9n$FF_S_SOYP)
+fdbd9n$FF_J_SOYP <- as.numeric(fdbd9n$FF_J_SOYP)
+fdbd9n$FF_J_KIMC <- as.numeric(fdbd9n$FF_J_KIMC)
+fdbd9n$FF_J_BUDA <- as.numeric(fdbd9n$FF_J_BUDA)
+fdbd9n$FF_J_BNCD <- as.numeric(fdbd9n$FF_J_BNCD)
+fdbd9n$FF_BNCURD <- as.numeric(fdbd9n$FF_BNCURD)
+fdbd9n$FF_S_BEAN <- as.numeric(fdbd9n$FF_S_BEAN)
+fdbd9n$FF_F_EGG <- as.numeric(fdbd9n$FF_F_EGG)
+fdbd9n$FF_S_EGG <- as.numeric(fdbd9n$FF_S_EGG)
+
+ssusi <- sum(fdbd9n$FF_T_BEEF,fdbd9n$FF_T_POTA,fdbd9n$FF_T_LOAC,fdbd9n$FF_J_POLL,fdbd9n$FF_S_SWED,fdbd9n$FF_S_BEEF,fdbd9n$FF_S_POLL,fdbd9n$FF_S_SOYP,fdbd9n$FF_J_SOYP,fdbd9n$FF_J_KIMC,fdbd9n$FF_J_BUDA,fdbd9n$FF_J_BNCD,fdbd9n$FF_BNCURD,fdbd9n$FF_S_BEAN,fdbd9n$FF_F_EGG,fdbd9n$FF_S_EGG,na.rm = T)
+ssusi/3351
+s3 <- 90*0.3204
+```
+#육ㄹ
+
+```{r}
+fdbd9n$FF_R_PORK <- gsub(1,0,fdbd9n$FF_R_PORK)
+fdbd9n$FF_R_PORK <- gsub(2,1/90,fdbd9n$FF_R_PORK)
+fdbd9n$FF_R_PORK <- gsub(3,2.5/90,fdbd9n$FF_R_PORK)
+fdbd9n$FF_R_PORK <- gsub(4,4/90,fdbd9n$FF_R_PORK)
+fdbd9n$FF_R_PORK <- gsub(5,12/90,fdbd9n$FF_R_PORK)
+fdbd9n$FF_R_PORK <- gsub(6,22/90,fdbd9n$FF_R_PORK)
+fdbd9n$FF_R_PORK <- gsub(7,30/90,fdbd9n$FF_R_PORK)
+fdbd9n$FF_R_PORK <- gsub(8,60/90,fdbd9n$FF_R_PORK)
+fdbd9n$FF_R_PORK <- gsub(9,90/90,fdbd9n$FF_R_PORK)
+```
+
+
+```{r}
+fdbd9n$FF_S_PORK <- gsub(1,0,fdbd9n$FF_S_PORK)
+fdbd9n$FF_S_PORK <- gsub(2,1/90,fdbd9n$FF_S_PORK)
+fdbd9n$FF_S_PORK <- gsub(3,2.5/90,fdbd9n$FF_S_PORK)
+fdbd9n$FF_S_PORK <- gsub(4,4/90,fdbd9n$FF_S_PORK)
+fdbd9n$FF_S_PORK <- gsub(5,12/90,fdbd9n$FF_S_PORK)
+fdbd9n$FF_S_PORK <- gsub(6,22/90,fdbd9n$FF_S_PORK)
+fdbd9n$FF_S_PORK <- gsub(7,30/90,fdbd9n$FF_S_PORK)
+fdbd9n$FF_S_PORK <- gsub(8,60/90,fdbd9n$FF_S_PORK)
+fdbd9n$FF_S_PORK <- gsub(9,90/90,fdbd9n$FF_S_PORK)
+```
+
+
+```{r}
+fdbd9n$FF_F_PORK <- gsub(1,0,fdbd9n$FF_F_PORK)
+fdbd9n$FF_F_PORK <- gsub(2,1/90,fdbd9n$FF_F_PORK)
+fdbd9n$FF_F_PORK <- gsub(3,2.5/90,fdbd9n$FF_F_PORK)
+fdbd9n$FF_F_PORK <- gsub(4,4/90,fdbd9n$FF_F_PORK)
+fdbd9n$FF_F_PORK <- gsub(5,12/90,fdbd9n$FF_F_PORK)
+fdbd9n$FF_F_PORK <- gsub(6,22/90,fdbd9n$FF_F_PORK)
+fdbd9n$FF_F_PORK <- gsub(7,30/90,fdbd9n$FF_F_PORK)
+fdbd9n$FF_F_PORK <- gsub(8,60/90,fdbd9n$FF_F_PORK)
+fdbd9n$FF_F_PORK <- gsub(9,90/90,fdbd9n$FF_F_PORK)
+```
+
+
+```{r}
+fdbd9n$FF_C_PORK <- gsub(1,0,fdbd9n$FF_C_PORK)
+fdbd9n$FF_C_PORK <- gsub(2,1/90,fdbd9n$FF_C_PORK)
+fdbd9n$FF_C_PORK <- gsub(3,2.5/90,fdbd9n$FF_C_PORK)
+fdbd9n$FF_C_PORK <- gsub(4,4/90,fdbd9n$FF_C_PORK)
+fdbd9n$FF_C_PORK <- gsub(5,12/90,fdbd9n$FF_C_PORK)
+fdbd9n$FF_C_PORK <- gsub(6,22/90,fdbd9n$FF_C_PORK)
+fdbd9n$FF_C_PORK <- gsub(7,30/90,fdbd9n$FF_C_PORK)
+fdbd9n$FF_C_PORK <- gsub(8,60/90,fdbd9n$FF_C_PORK)
+fdbd9n$FF_C_PORK <- gsub(9,90/90,fdbd9n$FF_C_PORK)
+```
+
+
+```{r}
+fdbd9n$FF_R_BEEF <- gsub(1,0,fdbd9n$FF_R_BEEF)
+fdbd9n$FF_R_BEEF <- gsub(2,1/90,fdbd9n$FF_R_BEEF)
+fdbd9n$FF_R_BEEF <- gsub(3,2.5/90,fdbd9n$FF_R_BEEF)
+fdbd9n$FF_R_BEEF <- gsub(4,4/90,fdbd9n$FF_R_BEEF)
+fdbd9n$FF_R_BEEF <- gsub(5,12/90,fdbd9n$FF_R_BEEF)
+fdbd9n$FF_R_BEEF <- gsub(6,22/90,fdbd9n$FF_R_BEEF)
+fdbd9n$FF_R_BEEF <- gsub(7,30/90,fdbd9n$FF_R_BEEF)
+fdbd9n$FF_R_BEEF <- gsub(8,60/90,fdbd9n$FF_R_BEEF)
+fdbd9n$FF_R_BEEF <- gsub(9,90/90,fdbd9n$FF_R_BEEF)
+```
+
+
+```{r}
+fdbd9n$FF_F_BEEF <- gsub(1,0,fdbd9n$FF_F_BEEF)
+fdbd9n$FF_F_BEEF <- gsub(2,1/90,fdbd9n$FF_F_BEEF)
+fdbd9n$FF_F_BEEF <- gsub(3,2.5/90,fdbd9n$FF_F_BEEF)
+fdbd9n$FF_F_BEEF <- gsub(4,4/90,fdbd9n$FF_F_BEEF)
+fdbd9n$FF_F_BEEF <- gsub(5,12/90,fdbd9n$FF_F_BEEF)
+fdbd9n$FF_F_BEEF <- gsub(6,22/90,fdbd9n$FF_F_BEEF)
+fdbd9n$FF_F_BEEF <- gsub(7,30/90,fdbd9n$FF_F_BEEF)
+fdbd9n$FF_F_BEEF <- gsub(8,60/90,fdbd9n$FF_F_BEEF)
+fdbd9n$FF_F_BEEF <- gsub(9,90/90,fdbd9n$FF_F_BEEF)
+```
+
+
+```{r}
+fdbd9n$FF_HAM <- gsub(1,0,fdbd9n$FF_HAM)
+fdbd9n$FF_HAM <- gsub(2,1/90,fdbd9n$FF_HAM)
+fdbd9n$FF_HAM <- gsub(3,2.5/90,fdbd9n$FF_HAM)
+fdbd9n$FF_HAM <- gsub(4,4/90,fdbd9n$FF_HAM)
+fdbd9n$FF_HAM <- gsub(5,12/90,fdbd9n$FF_HAM)
+fdbd9n$FF_HAM <- gsub(6,22/90,fdbd9n$FF_HAM)
+fdbd9n$FF_HAM <- gsub(7,30/90,fdbd9n$FF_HAM)
+fdbd9n$FF_HAM <- gsub(8,60/90,fdbd9n$FF_HAM)
+fdbd9n$FF_HAM <- gsub(9,90/90,fdbd9n$FF_HAM)
+```
+
+
+```{r}
+fdbd9n$FF_PORKBY <- gsub(1,0,fdbd9n$FF_PORKBY)
+fdbd9n$FF_PORKBY <- gsub(2,1/90,fdbd9n$FF_PORKBY)
+fdbd9n$FF_PORKBY <- gsub(3,2.5/90,fdbd9n$FF_PORKBY)
+fdbd9n$FF_PORKBY <- gsub(4,4/90,fdbd9n$FF_PORKBY)
+fdbd9n$FF_PORKBY <- gsub(5,12/90,fdbd9n$FF_PORKBY)
+fdbd9n$FF_PORKBY <- gsub(6,22/90,fdbd9n$FF_PORKBY)
+fdbd9n$FF_PORKBY <- gsub(7,30/90,fdbd9n$FF_PORKBY)
+fdbd9n$FF_PORKBY <- gsub(8,60/90,fdbd9n$FF_PORKBY)
+fdbd9n$FF_PORKBY <- gsub(9,90/90,fdbd9n$FF_PORKBY)
+```
+
+
+```{r}
+fdbd9n$FF_T_CHIC <- gsub(1,0,fdbd9n$FF_T_CHIC)
+fdbd9n$FF_T_CHIC <- gsub(2,1/90,fdbd9n$FF_T_CHIC)
+fdbd9n$FF_T_CHIC <- gsub(3,2.5/90,fdbd9n$FF_T_CHIC)
+fdbd9n$FF_T_CHIC <- gsub(4,4/90,fdbd9n$FF_T_CHIC)
+fdbd9n$FF_T_CHIC <- gsub(5,12/90,fdbd9n$FF_T_CHIC)
+fdbd9n$FF_T_CHIC <- gsub(6,22/90,fdbd9n$FF_T_CHIC)
+fdbd9n$FF_T_CHIC <- gsub(7,30/90,fdbd9n$FF_T_CHIC)
+fdbd9n$FF_T_CHIC <- gsub(8,60/90,fdbd9n$FF_T_CHIC)
+fdbd9n$FF_T_CHIC <- gsub(9,90/90,fdbd9n$FF_T_CHIC)
+```
+
+
+```{r}
+fdbd9n$FF_S_CHIC <- gsub(1,0,fdbd9n$FF_S_CHIC)
+fdbd9n$FF_S_CHIC <- gsub(2,1/90,fdbd9n$FF_S_CHIC)
+fdbd9n$FF_S_CHIC <- gsub(3,2.5/90,fdbd9n$FF_S_CHIC)
+fdbd9n$FF_S_CHIC <- gsub(4,4/90,fdbd9n$FF_S_CHIC)
+fdbd9n$FF_S_CHIC <- gsub(5,12/90,fdbd9n$FF_S_CHIC)
+fdbd9n$FF_S_CHIC <- gsub(6,22/90,fdbd9n$FF_S_CHIC)
+fdbd9n$FF_S_CHIC <- gsub(7,30/90,fdbd9n$FF_S_CHIC)
+fdbd9n$FF_S_CHIC <- gsub(8,60/90,fdbd9n$FF_S_CHIC)
+fdbd9n$FF_S_CHIC <- gsub(9,90/90,fdbd9n$FF_S_CHIC)
+```
+
+
+```{r}
+fdbd9n$FF_F_CHIC <- gsub(1,0,fdbd9n$FF_F_CHIC)
+fdbd9n$FF_F_CHIC <- gsub(2,1/90,fdbd9n$FF_F_CHIC)
+fdbd9n$FF_F_CHIC <- gsub(3,2.5/90,fdbd9n$FF_F_CHIC)
+fdbd9n$FF_F_CHIC <- gsub(4,4/90,fdbd9n$FF_F_CHIC)
+fdbd9n$FF_F_CHIC <- gsub(5,12/90,fdbd9n$FF_F_CHIC)
+fdbd9n$FF_F_CHIC <- gsub(6,22/90,fdbd9n$FF_F_CHIC)
+fdbd9n$FF_F_CHIC <- gsub(7,30/90,fdbd9n$FF_F_CHIC)
+fdbd9n$FF_F_CHIC <- gsub(8,60/90,fdbd9n$FF_F_CHIC)
+fdbd9n$FF_F_CHIC <- gsub(9,90/90,fdbd9n$FF_F_CHIC)
+```
+
+
+```{r}
+fdbd9n$FF_R_DUCK <- gsub(1,0,fdbd9n$FF_R_DUCK)
+fdbd9n$FF_R_DUCK <- gsub(2,1/90,fdbd9n$FF_R_DUCK)
+fdbd9n$FF_R_DUCK <- gsub(3,2.5/90,fdbd9n$FF_R_DUCK)
+fdbd9n$FF_R_DUCK <- gsub(4,4/90,fdbd9n$FF_R_DUCK)
+fdbd9n$FF_R_DUCK <- gsub(5,12/90,fdbd9n$FF_R_DUCK)
+fdbd9n$FF_R_DUCK <- gsub(6,22/90,fdbd9n$FF_R_DUCK)
+fdbd9n$FF_R_DUCK <- gsub(7,30/90,fdbd9n$FF_R_DUCK)
+fdbd9n$FF_R_DUCK <- gsub(8,60/90,fdbd9n$FF_R_DUCK)
+fdbd9n$FF_R_DUCK <- gsub(9,90/90,fdbd9n$FF_R_DUCK)
+```
+
+```{r}
+fdbd9n$FF_R_PORK <- as.numeric(fdbd9n$FF_R_PORK)
+fdbd9n$FF_S_PORK <- as.numeric(fdbd9n$FF_S_PORK)
+fdbd9n$FF_F_PORK <- as.numeric(fdbd9n$FF_F_PORK)
+fdbd9n$FF_C_PORK <- as.numeric(fdbd9n$FF_C_PORK)
+fdbd9n$FF_R_BEEF <- as.numeric(fdbd9n$FF_R_BEEF)
+fdbd9n$FF_F_BEEF <- as.numeric(fdbd9n$FF_F_BEEF)
+fdbd9n$FF_HAM <- as.numeric(fdbd9n$FF_HAM)
+fdbd9n$FF_PORKBY <- as.numeric(fdbd9n$FF_PORKBY)
+fdbd9n$FF_T_CHIC <- as.numeric(fdbd9n$FF_T_CHIC)
+fdbd9n$FF_S_CHIC <- as.numeric(fdbd9n$FF_S_CHIC)
+fdbd9n$FF_F_CHIC <- as.numeric(fdbd9n$FF_F_CHIC)
+fdbd9n$FF_R_DUCK <- as.numeric(fdbd9n$FF_R_DUCK)
+
+spbcd <- sum(fdbd9n$FF_R_PORK,fdbd9n$FF_S_PORK,fdbd9n$FF_F_PORK,fdbd9n$FF_C_PORK,fdbd9n$FF_R_BEEF,fdbd9n$FF_F_BEEF,fdbd9n$FF_HAM,fdbd9n$FF_PORKBY,fdbd9n$FF_T_CHIC,fdbd9n$FF_S_CHIC,fdbd9n$FF_F_CHIC,fdbd9n$FF_R_DUCK,na.rm = T)
+spbcd/3351
+s4 <- 90*0.1088
+```
+#해산물
+
+```{r}
+fdbd9n$FF_MACKER <- gsub(1,0,fdbd9n$FF_MACKER)
+fdbd9n$FF_MACKER <- gsub(2,1/90,fdbd9n$FF_MACKER)
+fdbd9n$FF_MACKER <- gsub(3,2.5/90,fdbd9n$FF_MACKER)
+fdbd9n$FF_MACKER <- gsub(4,4/90,fdbd9n$FF_MACKER)
+fdbd9n$FF_MACKER <- gsub(5,12/90,fdbd9n$FF_MACKER)
+fdbd9n$FF_MACKER <- gsub(6,22/90,fdbd9n$FF_MACKER)
+fdbd9n$FF_MACKER <- gsub(7,30/90,fdbd9n$FF_MACKER)
+fdbd9n$FF_MACKER <- gsub(8,60/90,fdbd9n$FF_MACKER)
+fdbd9n$FF_MACKER <- gsub(9,90/90,fdbd9n$FF_MACKER)
+```
+
+
+```{r}
+fdbd9n$FF_HAIRT <- gsub(1,0,fdbd9n$FF_HAIRT)
+fdbd9n$FF_HAIRT <- gsub(2,1/90,fdbd9n$FF_HAIRT)
+fdbd9n$FF_HAIRT <- gsub(3,2.5/90,fdbd9n$FF_HAIRT)
+fdbd9n$FF_HAIRT <- gsub(4,4/90,fdbd9n$FF_HAIRT)
+fdbd9n$FF_HAIRT <- gsub(5,12/90,fdbd9n$FF_HAIRT)
+fdbd9n$FF_HAIRT <- gsub(6,22/90,fdbd9n$FF_HAIRT)
+fdbd9n$FF_HAIRT <- gsub(7,30/90,fdbd9n$FF_HAIRT)
+fdbd9n$FF_HAIRT <- gsub(8,60/90,fdbd9n$FF_HAIRT)
+fdbd9n$FF_HAIRT <- gsub(9,90/90,fdbd9n$FF_HAIRT)
+```
+
+
+```{r}
+fdbd9n$FF_ANCH <- gsub(1,0,fdbd9n$FF_ANCH)
+fdbd9n$FF_ANCH <- gsub(2,1/90,fdbd9n$FF_ANCH)
+fdbd9n$FF_ANCH <- gsub(3,2.5/90,fdbd9n$FF_ANCH)
+fdbd9n$FF_ANCH <- gsub(4,4/90,fdbd9n$FF_ANCH)
+fdbd9n$FF_ANCH <- gsub(5,12/90,fdbd9n$FF_ANCH)
+fdbd9n$FF_ANCH <- gsub(6,22/90,fdbd9n$FF_ANCH)
+fdbd9n$FF_ANCH <- gsub(7,30/90,fdbd9n$FF_ANCH)
+fdbd9n$FF_ANCH <- gsub(8,60/90,fdbd9n$FF_ANCH)
+fdbd9n$FF_ANCH <- gsub(9,90/90,fdbd9n$FF_ANCH)
+```
+
+
+```{r}
+fdbd9n$FF_SQUID <- gsub(1,0,fdbd9n$FF_SQUID)
+fdbd9n$FF_SQUID <- gsub(2,1/90,fdbd9n$FF_SQUID)
+fdbd9n$FF_SQUID <- gsub(3,2.5/90,fdbd9n$FF_SQUID)
+fdbd9n$FF_SQUID <- gsub(4,4/90,fdbd9n$FF_SQUID)
+fdbd9n$FF_SQUID <- gsub(5,12/90,fdbd9n$FF_SQUID)
+fdbd9n$FF_SQUID <- gsub(6,22/90,fdbd9n$FF_SQUID)
+fdbd9n$FF_SQUID <- gsub(7,30/90,fdbd9n$FF_SQUID)
+fdbd9n$FF_SQUID <- gsub(8,60/90,fdbd9n$FF_SQUID)
+fdbd9n$FF_SQUID <- gsub(9,90/90,fdbd9n$FF_SQUID)
+```
+
+
+```{r}
+fdbd9n$FF_SCRAB <- gsub(1,0,fdbd9n$FF_SCRAB)
+fdbd9n$FF_SCRAB <- gsub(2,1/90,fdbd9n$FF_SCRAB)
+fdbd9n$FF_SCRAB <- gsub(3,2.5/90,fdbd9n$FF_SCRAB)
+fdbd9n$FF_SCRAB <- gsub(4,4/90,fdbd9n$FF_SCRAB)
+fdbd9n$FF_SCRAB <- gsub(5,12/90,fdbd9n$FF_SCRAB)
+fdbd9n$FF_SCRAB <- gsub(6,22/90,fdbd9n$FF_SCRAB)
+fdbd9n$FF_SCRAB <- gsub(7,30/90,fdbd9n$FF_SCRAB)
+fdbd9n$FF_SCRAB <- gsub(8,60/90,fdbd9n$FF_SCRAB)
+fdbd9n$FF_SCRAB <- gsub(9,90/90,fdbd9n$FF_SCRAB)
+```
+
+
+```{r}
+fdbd9n$FF_SFISH <- gsub(1,0,fdbd9n$FF_SFISH)
+fdbd9n$FF_SFISH <- gsub(2,1/90,fdbd9n$FF_SFISH)
+fdbd9n$FF_SFISH <- gsub(3,2.5/90,fdbd9n$FF_SFISH)
+fdbd9n$FF_SFISH <- gsub(4,4/90,fdbd9n$FF_SFISH)
+fdbd9n$FF_SFISH <- gsub(5,12/90,fdbd9n$FF_SFISH)
+fdbd9n$FF_SFISH <- gsub(6,22/90,fdbd9n$FF_SFISH)
+fdbd9n$FF_SFISH <- gsub(7,30/90,fdbd9n$FF_SFISH)
+fdbd9n$FF_SFISH <- gsub(8,60/90,fdbd9n$FF_SFISH)
+fdbd9n$FF_SFISH <- gsub(9,90/90,fdbd9n$FF_SFISH)
+```
+
+
+```{r}
+fdbd9n$FF_FPASTE <- gsub(1,0,fdbd9n$FF_FPASTE)
+fdbd9n$FF_FPASTE <- gsub(2,1/90,fdbd9n$FF_FPASTE)
+fdbd9n$FF_FPASTE <- gsub(3,2.5/90,fdbd9n$FF_FPASTE)
+fdbd9n$FF_FPASTE <- gsub(4,4/90,fdbd9n$FF_FPASTE)
+fdbd9n$FF_FPASTE <- gsub(5,12/90,fdbd9n$FF_FPASTE)
+fdbd9n$FF_FPASTE <- gsub(6,22/90,fdbd9n$FF_FPASTE)
+fdbd9n$FF_FPASTE <- gsub(7,30/90,fdbd9n$FF_FPASTE)
+fdbd9n$FF_FPASTE <- gsub(8,60/90,fdbd9n$FF_FPASTE)
+fdbd9n$FF_FPASTE <- gsub(9,90/90,fdbd9n$FF_FPASTE)
+```
+
+```{r}
+fdbd9n$FF_MACKER <- as.numeric(fdbd9n$FF_MACKER)
+fdbd9n$FF_HAIRT <- as.numeric(fdbd9n$FF_HAIRT)
+fdbd9n$FF_ANCH <- as.numeric(fdbd9n$FF_ANCH)
+fdbd9n$FF_SQUID <- as.numeric(fdbd9n$FF_SQUID)
+fdbd9n$FF_SCRAB <- as.numeric(fdbd9n$FF_SCRAB)
+fdbd9n$FF_SFISH <- as.numeric(fdbd9n$FF_SFISH)
+fdbd9n$FF_FPASTE <- as.numeric(fdbd9n$FF_FPASTE)
+
+spish <- sum(fdbd9n$FF_MACKER,fdbd9n$FF_HAIRT,fdbd9n$FF_ANCH,fdbd9n$FF_SQUID,fdbd9n$FF_SCRAB,fdbd9n$FF_SFISH,fdbd9n$FF_FPASTE,na.rm = T)
+spish/3351
+s5 <- 90*0.1134
+```
+#채소류
+
+```{r}
+fdbd9n$FF_SPROU <- gsub(1,0,fdbd9n$FF_SPROU)
+fdbd9n$FF_SPROU <- gsub(2,1/90,fdbd9n$FF_SPROU)
+fdbd9n$FF_SPROU <- gsub(3,2.5/90,fdbd9n$FF_SPROU)
+fdbd9n$FF_SPROU <- gsub(4,4/90,fdbd9n$FF_SPROU)
+fdbd9n$FF_SPROU <- gsub(5,12/90,fdbd9n$FF_SPROU)
+fdbd9n$FF_SPROU <- gsub(6,22/90,fdbd9n$FF_SPROU)
+fdbd9n$FF_SPROU <- gsub(7,30/90,fdbd9n$FF_SPROU)
+fdbd9n$FF_SPROU <- gsub(8,60/90,fdbd9n$FF_SPROU)
+fdbd9n$FF_SPROU <- gsub(9,90/90,fdbd9n$FF_SPROU)
+```
+
+
+```{r}
+fdbd9n$FF_SPINAC <- gsub(1,0,fdbd9n$FF_SPINAC)
+fdbd9n$FF_SPINAC <- gsub(2,1/90,fdbd9n$FF_SPINAC)
+fdbd9n$FF_SPINAC <- gsub(3,2.5/90,fdbd9n$FF_SPINAC)
+fdbd9n$FF_SPINAC <- gsub(4,4/90,fdbd9n$FF_SPINAC)
+fdbd9n$FF_SPINAC <- gsub(5,12/90,fdbd9n$FF_SPINAC)
+fdbd9n$FF_SPINAC <- gsub(6,22/90,fdbd9n$FF_SPINAC)
+fdbd9n$FF_SPINAC <- gsub(7,30/90,fdbd9n$FF_SPINAC)
+fdbd9n$FF_SPINAC <- gsub(8,60/90,fdbd9n$FF_SPINAC)
+fdbd9n$FF_SPINAC <- gsub(9,90/90,fdbd9n$FF_SPINAC)
+```
+
+
+```{r}
+fdbd9n$FF_BELLFI <- gsub(1,0,fdbd9n$FF_BELLFI)
+fdbd9n$FF_BELLFI <- gsub(2,1/90,fdbd9n$FF_BELLFI)
+fdbd9n$FF_BELLFI <- gsub(3,2.5/90,fdbd9n$FF_BELLFI)
+fdbd9n$FF_BELLFI <- gsub(4,4/90,fdbd9n$FF_BELLFI)
+fdbd9n$FF_BELLFI <- gsub(5,12/90,fdbd9n$FF_BELLFI)
+fdbd9n$FF_BELLFI <- gsub(6,22/90,fdbd9n$FF_BELLFI)
+fdbd9n$FF_BELLFI <- gsub(7,30/90,fdbd9n$FF_BELLFI)
+fdbd9n$FF_BELLFI <- gsub(8,60/90,fdbd9n$FF_BELLFI)
+fdbd9n$FF_BELLFI <- gsub(9,90/90,fdbd9n$FF_BELLFI)
+```
+
+
+```{r}
+fdbd9n$FF_PUMPKI <- gsub(1,0,fdbd9n$FF_PUMPKI)
+fdbd9n$FF_PUMPKI <- gsub(2,1/90,fdbd9n$FF_PUMPKI)
+fdbd9n$FF_PUMPKI <- gsub(3,2.5/90,fdbd9n$FF_PUMPKI)
+fdbd9n$FF_PUMPKI <- gsub(4,4/90,fdbd9n$FF_PUMPKI)
+fdbd9n$FF_PUMPKI <- gsub(5,12/90,fdbd9n$FF_PUMPKI)
+fdbd9n$FF_PUMPKI <- gsub(6,22/90,fdbd9n$FF_PUMPKI)
+fdbd9n$FF_PUMPKI <- gsub(7,30/90,fdbd9n$FF_PUMPKI)
+fdbd9n$FF_PUMPKI <- gsub(8,60/90,fdbd9n$FF_PUMPKI)
+fdbd9n$FF_PUMPKI <- gsub(9,90/90,fdbd9n$FF_PUMPKI)
+```
+
+
+```{r}
+fdbd9n$FF_OVEG <- gsub(1,0,fdbd9n$FF_OVEG)
+fdbd9n$FF_OVEG <- gsub(2,1/90,fdbd9n$FF_OVEG)
+fdbd9n$FF_OVEG <- gsub(3,2.5/90,fdbd9n$FF_OVEG)
+fdbd9n$FF_OVEG <- gsub(4,4/90,fdbd9n$FF_OVEG)
+fdbd9n$FF_OVEG <- gsub(5,12/90,fdbd9n$FF_OVEG)
+fdbd9n$FF_OVEG <- gsub(6,22/90,fdbd9n$FF_OVEG)
+fdbd9n$FF_OVEG <- gsub(7,30/90,fdbd9n$FF_OVEG)
+fdbd9n$FF_OVEG <- gsub(8,60/90,fdbd9n$FF_OVEG)
+fdbd9n$FF_OVEG <- gsub(9,90/90,fdbd9n$FF_OVEG)
+```
+
+
+```{r}
+fdbd9n$FF_CUCUMB <- gsub(1,0,fdbd9n$FF_CUCUMB)
+fdbd9n$FF_CUCUMB <- gsub(2,1/90,fdbd9n$FF_CUCUMB)
+fdbd9n$FF_CUCUMB <- gsub(3,2.5/90,fdbd9n$FF_CUCUMB)
+fdbd9n$FF_CUCUMB <- gsub(4,4/90,fdbd9n$FF_CUCUMB)
+fdbd9n$FF_CUCUMB <- gsub(5,12/90,fdbd9n$FF_CUCUMB)
+fdbd9n$FF_CUCUMB <- gsub(6,22/90,fdbd9n$FF_CUCUMB)
+fdbd9n$FF_CUCUMB <- gsub(7,30/90,fdbd9n$FF_CUCUMB)
+fdbd9n$FF_CUCUMB <- gsub(8,60/90,fdbd9n$FF_CUCUMB)
+fdbd9n$FF_CUCUMB <- gsub(9,90/90,fdbd9n$FF_CUCUMB)
+```
+
+
+```{r}
+fdbd9n$FF_RADI <- gsub(1,0,fdbd9n$FF_RADI)
+fdbd9n$FF_RADI <- gsub(2,1/90,fdbd9n$FF_RADI)
+fdbd9n$FF_RADI <- gsub(3,2.5/90,fdbd9n$FF_RADI)
+fdbd9n$FF_RADI <- gsub(4,4/90,fdbd9n$FF_RADI)
+fdbd9n$FF_RADI <- gsub(5,12/90,fdbd9n$FF_RADI)
+fdbd9n$FF_RADI <- gsub(6,22/90,fdbd9n$FF_RADI)
+fdbd9n$FF_RADI <- gsub(7,30/90,fdbd9n$FF_RADI)
+fdbd9n$FF_RADI <- gsub(8,60/90,fdbd9n$FF_RADI)
+fdbd9n$FF_RADI <- gsub(9,90/90,fdbd9n$FF_RADI)
+```
+
+```{r}
+fdbd9n$FF_VSALAD <- gsub(1,0,fdbd9n$FF_VSALAD)
+fdbd9n$FF_VSALAD <- gsub(2,1/90,fdbd9n$FF_VSALAD)
+fdbd9n$FF_VSALAD <- gsub(3,2.5/90,fdbd9n$FF_VSALAD)
+fdbd9n$FF_VSALAD <- gsub(4,4/90,fdbd9n$FF_VSALAD)
+fdbd9n$FF_VSALAD <- gsub(5,12/90,fdbd9n$FF_VSALAD)
+fdbd9n$FF_VSALAD <- gsub(6,22/90,fdbd9n$FF_VSALAD)
+fdbd9n$FF_VSALAD <- gsub(7,30/90,fdbd9n$FF_VSALAD)
+fdbd9n$FF_VSALAD <- gsub(8,60/90,fdbd9n$FF_VSALAD)
+fdbd9n$FF_VSALAD <- gsub(9,90/90,fdbd9n$FF_VSALAD)
+```
+
+
+```{r}
+fdbd9n$FF_GREENO <- gsub(1,0,fdbd9n$FF_GREENO)
+fdbd9n$FF_GREENO <- gsub(2,1/90,fdbd9n$FF_GREENO)
+fdbd9n$FF_GREENO <- gsub(3,2.5/90,fdbd9n$FF_GREENO)
+fdbd9n$FF_GREENO <- gsub(4,4/90,fdbd9n$FF_GREENO)
+fdbd9n$FF_GREENO <- gsub(5,12/90,fdbd9n$FF_GREENO)
+fdbd9n$FF_GREENO <- gsub(6,22/90,fdbd9n$FF_GREENO)
+fdbd9n$FF_GREENO <- gsub(7,30/90,fdbd9n$FF_GREENO)
+fdbd9n$FF_GREENO <- gsub(8,60/90,fdbd9n$FF_GREENO)
+fdbd9n$FF_GREENO <- gsub(9,90/90,fdbd9n$FF_GREENO)
+```
+
+
+```{r}
+fdbd9n$FF_RAWVEG <- gsub(1,0,fdbd9n$FF_RAWVEG)
+fdbd9n$FF_RAWVEG <- gsub(2,1/90,fdbd9n$FF_RAWVEG)
+fdbd9n$FF_RAWVEG <- gsub(3,2.5/90,fdbd9n$FF_RAWVEG)
+fdbd9n$FF_RAWVEG <- gsub(4,4/90,fdbd9n$FF_RAWVEG)
+fdbd9n$FF_RAWVEG <- gsub(5,12/90,fdbd9n$FF_RAWVEG)
+fdbd9n$FF_RAWVEG <- gsub(6,22/90,fdbd9n$FF_RAWVEG)
+fdbd9n$FF_RAWVEG <- gsub(7,30/90,fdbd9n$FF_RAWVEG)
+fdbd9n$FF_RAWVEG <- gsub(8,60/90,fdbd9n$FF_RAWVEG)
+fdbd9n$FF_RAWVEG <- gsub(9,90/90,fdbd9n$FF_RAWVEG)
+```
+
+
+```{r}
+fdbd9n$FF_BROCOL <- gsub(1,0,fdbd9n$FF_BROCOL)
+fdbd9n$FF_BROCOL <- gsub(2,1/90,fdbd9n$FF_BROCOL)
+fdbd9n$FF_BROCOL <- gsub(3,2.5/90,fdbd9n$FF_BROCOL)
+fdbd9n$FF_BROCOL <- gsub(4,4/90,fdbd9n$FF_BROCOL)
+fdbd9n$FF_BROCOL <- gsub(5,12/90,fdbd9n$FF_BROCOL)
+fdbd9n$FF_BROCOL <- gsub(6,22/90,fdbd9n$FF_BROCOL)
+fdbd9n$FF_BROCOL <- gsub(7,30/90,fdbd9n$FF_BROCOL)
+fdbd9n$FF_BROCOL <- gsub(8,60/90,fdbd9n$FF_BROCOL)
+fdbd9n$FF_BROCOL <- gsub(9,90/90,fdbd9n$FF_BROCOL)
+```
+
+
+```{r}
+fdbd9n$FF_GARLIC <- gsub(1,0,fdbd9n$FF_GARLIC)
+fdbd9n$FF_GARLIC <- gsub(2,1/90,fdbd9n$FF_GARLIC)
+fdbd9n$FF_GARLIC <- gsub(3,2.5/90,fdbd9n$FF_GARLIC)
+fdbd9n$FF_GARLIC <- gsub(4,4/90,fdbd9n$FF_GARLIC)
+fdbd9n$FF_GARLIC <- gsub(5,12/90,fdbd9n$FF_GARLIC)
+fdbd9n$FF_GARLIC <- gsub(6,22/90,fdbd9n$FF_GARLIC)
+fdbd9n$FF_GARLIC <- gsub(7,30/90,fdbd9n$FF_GARLIC)
+fdbd9n$FF_GARLIC <- gsub(8,60/90,fdbd9n$FF_GARLIC)
+fdbd9n$FF_GARLIC <- gsub(9,90/90,fdbd9n$FF_GARLIC)
+```
+
+
+```{r}
+fdbd9n$FF_KIMCHI <- gsub(1,0,fdbd9n$FF_KIMCHI)
+fdbd9n$FF_KIMCHI <- gsub(2,1/90,fdbd9n$FF_KIMCHI)
+fdbd9n$FF_KIMCHI <- gsub(3,2.5/90,fdbd9n$FF_KIMCHI)
+fdbd9n$FF_KIMCHI <- gsub(4,4/90,fdbd9n$FF_KIMCHI)
+fdbd9n$FF_KIMCHI <- gsub(5,12/90,fdbd9n$FF_KIMCHI)
+fdbd9n$FF_KIMCHI <- gsub(6,22/90,fdbd9n$FF_KIMCHI)
+fdbd9n$FF_KIMCHI <- gsub(7,30/90,fdbd9n$FF_KIMCHI)
+fdbd9n$FF_KIMCHI <- gsub(8,60/90,fdbd9n$FF_KIMCHI)
+fdbd9n$FF_KIMCHI <- gsub(9,90/90,fdbd9n$FF_KIMCHI)
+```
+
+
+```{r}
+fdbd9n$FF_OKIMCH <- gsub(1,0,fdbd9n$FF_OKIMCH)
+fdbd9n$FF_OKIMCH <- gsub(2,1/90,fdbd9n$FF_OKIMCH)
+fdbd9n$FF_OKIMCH <- gsub(3,2.5/90,fdbd9n$FF_OKIMCH)
+fdbd9n$FF_OKIMCH <- gsub(4,4/90,fdbd9n$FF_OKIMCH)
+fdbd9n$FF_OKIMCH <- gsub(5,12/90,fdbd9n$FF_OKIMCH)
+fdbd9n$FF_OKIMCH <- gsub(6,22/90,fdbd9n$FF_OKIMCH)
+fdbd9n$FF_OKIMCH <- gsub(7,30/90,fdbd9n$FF_OKIMCH)
+fdbd9n$FF_OKIMCH <- gsub(8,60/90,fdbd9n$FF_OKIMCH)
+fdbd9n$FF_OKIMCH <- gsub(9,90/90,fdbd9n$FF_OKIMCH)
+```
+
+
+```{r}
+fdbd9n$FF_SVEG <- gsub(1,0,fdbd9n$FF_SVEG)
+fdbd9n$FF_SVEG <- gsub(2,1/90,fdbd9n$FF_SVEG)
+fdbd9n$FF_SVEG <- gsub(3,2.5/90,fdbd9n$FF_SVEG)
+fdbd9n$FF_SVEG <- gsub(4,4/90,fdbd9n$FF_SVEG)
+fdbd9n$FF_SVEG <- gsub(5,12/90,fdbd9n$FF_SVEG)
+fdbd9n$FF_SVEG <- gsub(6,22/90,fdbd9n$FF_SVEG)
+fdbd9n$FF_SVEG <- gsub(7,30/90,fdbd9n$FF_SVEG)
+fdbd9n$FF_SVEG <- gsub(8,60/90,fdbd9n$FF_SVEG)
+fdbd9n$FF_SVEG <- gsub(9,90/90,fdbd9n$FF_SVEG)
+```
+
+
+```{r}
+fdbd9n$FF_ROOT <- gsub(1,0,fdbd9n$FF_ROOT)
+fdbd9n$FF_ROOT <- gsub(2,1/90,fdbd9n$FF_ROOT)
+fdbd9n$FF_ROOT <- gsub(3,2.5/90,fdbd9n$FF_ROOT)
+fdbd9n$FF_ROOT <- gsub(4,4/90,fdbd9n$FF_ROOT)
+fdbd9n$FF_ROOT <- gsub(5,12/90,fdbd9n$FF_ROOT)
+fdbd9n$FF_ROOT <- gsub(6,22/90,fdbd9n$FF_ROOT)
+fdbd9n$FF_ROOT <- gsub(7,30/90,fdbd9n$FF_ROOT)
+fdbd9n$FF_ROOT <- gsub(8,60/90,fdbd9n$FF_ROOT)
+fdbd9n$FF_ROOT <- gsub(9,90/90,fdbd9n$FF_ROOT)
+```
+
+
+```{r}
+fdbd9n$FF_MUSHRO <- gsub(1,0,fdbd9n$FF_MUSHRO)
+fdbd9n$FF_MUSHRO <- gsub(2,1/90,fdbd9n$FF_MUSHRO)
+fdbd9n$FF_MUSHRO <- gsub(3,2.5/90,fdbd9n$FF_MUSHRO)
+fdbd9n$FF_MUSHRO <- gsub(4,4/90,fdbd9n$FF_MUSHRO)
+fdbd9n$FF_MUSHRO <- gsub(5,12/90,fdbd9n$FF_MUSHRO)
+fdbd9n$FF_MUSHRO <- gsub(6,22/90,fdbd9n$FF_MUSHRO)
+fdbd9n$FF_MUSHRO <- gsub(7,30/90,fdbd9n$FF_MUSHRO)
+fdbd9n$FF_MUSHRO <- gsub(8,60/90,fdbd9n$FF_MUSHRO)
+fdbd9n$FF_MUSHRO <- gsub(9,90/90,fdbd9n$FF_MUSHRO)
+```
+
+
+```{r}
+fdbd9n$FF_LAV <- gsub(1,0,fdbd9n$FF_LAV)
+fdbd9n$FF_LAV <- gsub(2,1/90,fdbd9n$FF_LAV)
+fdbd9n$FF_LAV <- gsub(3,2.5/90,fdbd9n$FF_LAV)
+fdbd9n$FF_LAV <- gsub(4,4/90,fdbd9n$FF_LAV)
+fdbd9n$FF_LAV <- gsub(5,12/90,fdbd9n$FF_LAV)
+fdbd9n$FF_LAV <- gsub(6,22/90,fdbd9n$FF_LAV)
+fdbd9n$FF_LAV <- gsub(7,30/90,fdbd9n$FF_LAV)
+fdbd9n$FF_LAV <- gsub(8,60/90,fdbd9n$FF_LAV)
+fdbd9n$FF_LAV <- gsub(9,90/90,fdbd9n$FF_LAV)
+```
+
+
+```{r}
+fdbd9n$FF_GLAV <- gsub(1,0,fdbd9n$FF_GLAV)
+fdbd9n$FF_GLAV <- gsub(2,1/90,fdbd9n$FF_GLAV)
+fdbd9n$FF_GLAV <- gsub(3,2.5/90,fdbd9n$FF_GLAV)
+fdbd9n$FF_GLAV <- gsub(4,4/90,fdbd9n$FF_GLAV)
+fdbd9n$FF_GLAV <- gsub(5,12/90,fdbd9n$FF_GLAV)
+fdbd9n$FF_GLAV <- gsub(6,22/90,fdbd9n$FF_GLAV)
+fdbd9n$FF_GLAV <- gsub(7,30/90,fdbd9n$FF_GLAV)
+fdbd9n$FF_GLAV <- gsub(8,60/90,fdbd9n$FF_GLAV)
+fdbd9n$FF_GLAV <- gsub(9,90/90,fdbd9n$FF_GLAV)
+```
+
+
+```{r}
+fdbd9n$FF_F_SWED <- gsub(1,0,fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_SWED <- gsub(2,1/90,fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_SWED <- gsub(3,2.5/90,fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_SWED <- gsub(4,4/90,fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_SWED <- gsub(5,12/90,fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_SWED <- gsub(6,22/90,fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_SWED <- gsub(7,30/90,fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_SWED <- gsub(8,60/90,fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_SWED <- gsub(9,90/90,fdbd9n$FF_F_SWED)
+```
+
+
+```{r}
+fdbd9n$FF_F_POTA <- gsub(1,0,fdbd9n$FF_F_POTA)
+fdbd9n$FF_F_POTA <- gsub(2,1/90,fdbd9n$FF_F_POTA)
+fdbd9n$FF_F_POTA <- gsub(3,2.5/90,fdbd9n$FF_F_POTA)
+fdbd9n$FF_F_POTA <- gsub(4,4/90,fdbd9n$FF_F_POTA)
+fdbd9n$FF_F_POTA <- gsub(5,12/90,fdbd9n$FF_F_POTA)
+fdbd9n$FF_F_POTA <- gsub(6,22/90,fdbd9n$FF_F_POTA)
+fdbd9n$FF_F_POTA <- gsub(7,30/90,fdbd9n$FF_F_POTA)
+fdbd9n$FF_F_POTA <- gsub(8,60/90,fdbd9n$FF_F_POTA)
+fdbd9n$FF_F_POTA <- gsub(9,90/90,fdbd9n$FF_F_POTA)
+```
+
+
+
+```{r}
+fdbd9n$FF_S_POTA <- gsub(1,0,fdbd9n$FF_S_POTA)
+fdbd9n$FF_S_POTA <- gsub(2,1/90,fdbd9n$FF_S_POTA)
+fdbd9n$FF_S_POTA <- gsub(3,2.5/90,fdbd9n$FF_S_POTA)
+fdbd9n$FF_S_POTA <- gsub(4,4/90,fdbd9n$FF_S_POTA)
+fdbd9n$FF_S_POTA <- gsub(5,12/90,fdbd9n$FF_S_POTA)
+fdbd9n$FF_S_POTA <- gsub(6,22/90,fdbd9n$FF_S_POTA)
+fdbd9n$FF_S_POTA <- gsub(7,30/90,fdbd9n$FF_S_POTA)
+fdbd9n$FF_S_POTA <- gsub(8,60/90,fdbd9n$FF_S_POTA)
+fdbd9n$FF_S_POTA <- gsub(9,90/90,fdbd9n$FF_S_POTA)
+```
+
+
+
+```{r}
+fdbd9n$FF_SWPOTA <- gsub(1,0,fdbd9n$FF_SWPOTA)
+fdbd9n$FF_SWPOTA <- gsub(2,1/90,fdbd9n$FF_SWPOTA)
+fdbd9n$FF_SWPOTA <- gsub(3,2.5/90,fdbd9n$FF_SWPOTA)
+fdbd9n$FF_SWPOTA <- gsub(4,4/90,fdbd9n$FF_SWPOTA)
+fdbd9n$FF_SWPOTA <- gsub(5,12/90,fdbd9n$FF_SWPOTA)
+fdbd9n$FF_SWPOTA <- gsub(6,22/90,fdbd9n$FF_SWPOTA)
+fdbd9n$FF_SWPOTA <- gsub(7,30/90,fdbd9n$FF_SWPOTA)
+fdbd9n$FF_SWPOTA <- gsub(8,60/90,fdbd9n$FF_SWPOTA)
+fdbd9n$FF_SWPOTA <- gsub(9,90/90,fdbd9n$FF_SWPOTA)
+```
+
+```{r}
+fdbd9n$FF_CORN <- gsub(1,0,fdbd9n$FF_CORN)
+fdbd9n$FF_CORN <- gsub(2,1/90,fdbd9n$FF_CORN)
+fdbd9n$FF_CORN <- gsub(3,2.5/90,fdbd9n$FF_CORN)
+fdbd9n$FF_CORN <- gsub(4,4/90,fdbd9n$FF_CORN)
+fdbd9n$FF_CORN <- gsub(5,12/90,fdbd9n$FF_CORN)
+fdbd9n$FF_CORN <- gsub(6,22/90,fdbd9n$FF_CORN)
+fdbd9n$FF_CORN <- gsub(7,30/90,fdbd9n$FF_CORN)
+fdbd9n$FF_CORN <- gsub(8,60/90,fdbd9n$FF_CORN)
+fdbd9n$FF_CORN <- gsub(9,90/90,fdbd9n$FF_CORN)
+```
+
+```{r}
+fdbd9n$FF_SPROU <- as.numeric(fdbd9n$FF_SPROU)
+fdbd9n$FF_SPINAC <- as.numeric(fdbd9n$FF_SPINAC)
+fdbd9n$FF_BELLFI <- as.numeric(fdbd9n$FF_BELLFI)
+fdbd9n$FF_PUMPKI <- as.numeric(fdbd9n$FF_PUMPKI)
+fdbd9n$FF_OVEG <- as.numeric(fdbd9n$FF_OVEG)
+fdbd9n$FF_CUCUMB <- as.numeric(fdbd9n$FF_CUCUMB)
+fdbd9n$FF_RADI <- as.numeric(fdbd9n$FF_RADI)
+fdbd9n$FF_VSALAD <- as.numeric(fdbd9n$FF_VSALAD)
+fdbd9n$FF_GREENO <- as.numeric(fdbd9n$FF_GREENO)
+fdbd9n$FF_RAWVEG <- as.numeric(fdbd9n$FF_RAWVEG)
+fdbd9n$FF_BROCOL <- as.numeric(fdbd9n$FF_BROCOL)
+fdbd9n$FF_GARLIC <- as.numeric(fdbd9n$FF_GARLIC)
+fdbd9n$FF_KIMCHI <- as.numeric(fdbd9n$FF_KIMCHI)
+fdbd9n$FF_OKIMCH <- as.numeric(fdbd9n$FF_OKIMCH)
+fdbd9n$FF_SVEG <- as.numeric(fdbd9n$FF_SVEG)
+fdbd9n$FF_ROOT <- as.numeric(fdbd9n$FF_ROOT)
+fdbd9n$FF_MUSHRO <- as.numeric(fdbd9n$FF_MUSHRO)
+fdbd9n$FF_LAV <- as.numeric(fdbd9n$FF_LAV )
+fdbd9n$FF_GLAV <- as.numeric(fdbd9n$FF_GLAV)
+fdbd9n$FF_F_SWED <- as.numeric(fdbd9n$FF_F_SWED)
+fdbd9n$FF_F_POTA <- as.numeric(fdbd9n$FF_F_POTA )
+fdbd9n$FF_S_POTA <- as.numeric(fdbd9n$FF_S_POTA)
+fdbd9n$FF_SWPOTA <- as.numeric(fdbd9n$FF_SWPOTA)
+fdbd9n$FF_CORN <- as.numeric(fdbd9n$FF_CORN)
+
+svage <- sum(fdbd9n$FF_SPROU,fdbd9n$FF_SPINAC,fdbd9n$FF_BELLFI,fdbd9n$FF_PUMPKI,fdbd9n$FF_OVEG,fdbd9n$FF_CUCUMB,fdbd9n$FF_RADI,fdbd9n$FF_VSALAD,fdbd9n$FF_GREENO,fdbd9n$FF_RAWVEG,fdbd9n$FF_BROCOL,fdbd9n$FF_GARLIC,fdbd9n$FF_KIMCHI,fdbd9n$FF_OKIMCH,fdbd9n$FF_SVEG,fdbd9n$FF_ROOT,fdbd9n$FF_MUSHRO,fdbd9n$FF_LAV,fdbd9n$FF_GLAV,fdbd9n$FF_F_SWED,fdbd9n$FF_F_POTA,fdbd9n$FF_S_POTA,fdbd9n$FF_SWPOTA,fdbd9n$FF_CORN,na.rm = T)
+svage/3351
+s6 <- 90*0.9623
+```
+#유제품
+
+```{r}
+fdbd9n$FF_MILK <- gsub(1,0,fdbd9n$FF_MILK)
+fdbd9n$FF_MILK <- gsub(2,1/90,fdbd9n$FF_MILK)
+fdbd9n$FF_MILK <- gsub(3,2.5/90,fdbd9n$FF_MILK)
+fdbd9n$FF_MILK <- gsub(4,4/90,fdbd9n$FF_MILK)
+fdbd9n$FF_MILK <- gsub(5,12/90,fdbd9n$FF_MILK)
+fdbd9n$FF_MILK <- gsub(6,22/90,fdbd9n$FF_MILK)
+fdbd9n$FF_MILK <- gsub(7,30/90,fdbd9n$FF_MILK)
+fdbd9n$FF_MILK <- gsub(8,60/90,fdbd9n$FF_MILK)
+fdbd9n$FF_MILK <- gsub(9,90/90,fdbd9n$FF_MILK)
+```
+
+
+```{r}
+fdbd9n$FF_L_YOGU <- gsub(1,0,fdbd9n$FF_L_YOGU)
+fdbd9n$FF_L_YOGU <- gsub(2,1/90,fdbd9n$FF_L_YOGU)
+fdbd9n$FF_L_YOGU <- gsub(3,2.5/90,fdbd9n$FF_L_YOGU)
+fdbd9n$FF_L_YOGU <- gsub(4,4/90,fdbd9n$FF_L_YOGU)
+fdbd9n$FF_L_YOGU <- gsub(5,12/90,fdbd9n$FF_L_YOGU)
+fdbd9n$FF_L_YOGU <- gsub(6,22/90,fdbd9n$FF_L_YOGU)
+fdbd9n$FF_L_YOGU <- gsub(7,30/90,fdbd9n$FF_L_YOGU)
+fdbd9n$FF_L_YOGU <- gsub(8,60/90,fdbd9n$FF_L_YOGU)
+fdbd9n$FF_L_YOGU <- gsub(9,90/90,fdbd9n$FF_L_YOGU)
+```
+
+
+```{r}
+fdbd9n$FF_C_YOGU <- gsub(1,0,fdbd9n$FF_C_YOGU)
+fdbd9n$FF_C_YOGU <- gsub(2,1/90,fdbd9n$FF_C_YOGU)
+fdbd9n$FF_C_YOGU <- gsub(3,2.5/90,fdbd9n$FF_C_YOGU)
+fdbd9n$FF_C_YOGU <- gsub(4,4/90,fdbd9n$FF_C_YOGU)
+fdbd9n$FF_C_YOGU <- gsub(5,12/90,fdbd9n$FF_C_YOGU)
+fdbd9n$FF_C_YOGU <- gsub(6,22/90,fdbd9n$FF_C_YOGU)
+fdbd9n$FF_C_YOGU <- gsub(7,30/90,fdbd9n$FF_C_YOGU)
+fdbd9n$FF_C_YOGU <- gsub(8,60/90,fdbd9n$FF_C_YOGU)
+fdbd9n$FF_C_YOGU <- gsub(9,90/90,fdbd9n$FF_C_YOGU)
+```
+
+
+```{r}
+fdbd9n$FF_BN_MILK <- gsub(1,0,fdbd9n$FF_BN_MILK)
+fdbd9n$FF_BN_MILK <- gsub(2,1/90,fdbd9n$FF_BN_MILK)
+fdbd9n$FF_BN_MILK <- gsub(3,2.5/90,fdbd9n$FF_BN_MILK)
+fdbd9n$FF_BN_MILK <- gsub(4,4/90,fdbd9n$FF_BN_MILK)
+fdbd9n$FF_BN_MILK <- gsub(5,12/90,fdbd9n$FF_BN_MILK)
+fdbd9n$FF_BN_MILK <- gsub(6,22/90,fdbd9n$FF_BN_MILK)
+fdbd9n$FF_BN_MILK <- gsub(7,30/90,fdbd9n$FF_BN_MILK)
+fdbd9n$FF_BN_MILK <- gsub(8,60/90,fdbd9n$FF_BN_MILK)
+fdbd9n$FF_BN_MILK <- gsub(9,90/90,fdbd9n$FF_BN_MILK)
+```
+
+
+```{r}
+fdbd9n$FF_MILK <- as.numeric(fdbd9n$FF_MILK)
+fdbd9n$FF_L_YOGU <- as.numeric(fdbd9n$FF_L_YOGU)
+fdbd9n$FF_C_YOGU <- as.numeric(fdbd9n$FF_C_YOGU)
+fdbd9n$FF_BN_MILK <- as.numeric(fdbd9n$FF_BN_MILK)
+
+smyog  <- sum(fdbd9n$FF_MILK,fdbd9n$FF_L_YOGU,fdbd9n$FF_C_YOGU,fdbd9n$FF_BN_MILK,na.rm = T)
+smyog/3351
+s7 <- 0.1749*90
+```
+#과일류
+
+```{r}
+fdbd9n$FF_STRAW_YR <- gsub(1,0,fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_STRAW_YR <- gsub(2,1/90,fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_STRAW_YR <- gsub(3,2.5/90,fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_STRAW_YR <- gsub(4,4/90,fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_STRAW_YR <- gsub(5,12/90,fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_STRAW_YR <- gsub(6,22/90,fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_STRAW_YR <- gsub(7,30/90,fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_STRAW_YR <- gsub(8,60/90,fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_STRAW_YR <- gsub(9,90/90,fdbd9n$FF_STRAW_YR)
+```
+
+
+```{r}
+fdbd9n$FF_TOMATO_YR <- gsub(1,0,fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_TOMATO_YR <- gsub(2,1/90,fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_TOMATO_YR <- gsub(3,2.5/90,fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_TOMATO_YR <- gsub(4,4/90,fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_TOMATO_YR <- gsub(5,12/90,fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_TOMATO_YR <- gsub(6,22/90,fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_TOMATO_YR <- gsub(7,30/90,fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_TOMATO_YR <- gsub(8,60/90,fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_TOMATO_YR <- gsub(9,90/90,fdbd9n$FF_TOMATO_YR)
+```
+
+
+```{r}
+fdbd9n$FF_MMELON_YR <- gsub(1,0,fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_MMELON_YR <- gsub(2,1/90,fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_MMELON_YR <- gsub(3,2.5/90,fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_MMELON_YR <- gsub(4,4/90,fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_MMELON_YR <- gsub(5,12/90,fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_MMELON_YR <- gsub(6,22/90,fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_MMELON_YR <- gsub(7,30/90,fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_MMELON_YR <- gsub(8,60/90,fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_MMELON_YR <- gsub(9,90/90,fdbd9n$FF_MMELON_YR)
+```
+
+
+```{r}
+fdbd9n$FF_WMELON_YR <- gsub(1,0,fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_WMELON_YR <- gsub(2,1/90,fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_WMELON_YR <- gsub(3,2.5/90,fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_WMELON_YR <- gsub(4,4/90,fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_WMELON_YR <- gsub(5,12/90,fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_WMELON_YR <- gsub(6,22/90,fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_WMELON_YR <- gsub(7,30/90,fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_WMELON_YR <- gsub(8,60/90,fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_WMELON_YR <- gsub(9,90/90,fdbd9n$FF_WMELON_YR)
+```
+
+
+```{r}
+fdbd9n$FF_PEACH_YR <- gsub(1,0,fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_PEACH_YR <- gsub(2,1/90,fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_PEACH_YR <- gsub(3,2.5/90,fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_PEACH_YR <- gsub(4,4/90,fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_PEACH_YR <- gsub(5,12/90,fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_PEACH_YR <- gsub(6,22/90,fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_PEACH_YR <- gsub(7,30/90,fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_PEACH_YR <- gsub(8,60/90,fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_PEACH_YR <- gsub(9,90/90,fdbd9n$FF_PEACH_YR)
+```
+
+
+```{r}
+fdbd9n$FF_GRAPE_YR <- gsub(1,0,fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_GRAPE_YR <- gsub(2,1/90,fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_GRAPE_YR <- gsub(3,2.5/90,fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_GRAPE_YR <- gsub(4,4/90,fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_GRAPE_YR <- gsub(5,12/90,fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_GRAPE_YR <- gsub(6,22/90,fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_GRAPE_YR <- gsub(7,30/90,fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_GRAPE_YR <- gsub(8,60/90,fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_GRAPE_YR <- gsub(9,90/90,fdbd9n$FF_GRAPE_YR)
+```
+
+
+```{r}
+fdbd9n$FF_APPLE_YR <- gsub(1,0,fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_APPLE_YR <- gsub(2,1/90,fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_APPLE_YR <- gsub(3,2.5/90,fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_APPLE_YR <- gsub(4,4/90,fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_APPLE_YR <- gsub(5,12/90,fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_APPLE_YR <- gsub(6,22/90,fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_APPLE_YR <- gsub(7,30/90,fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_APPLE_YR <- gsub(8,60/90,fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_APPLE_YR <- gsub(9,90/90,fdbd9n$FF_APPLE_YR)
+```
+
+
+```{r}
+fdbd9n$FF_PEAR_YR <- gsub(1,0,fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PEAR_YR <- gsub(2,1/90,fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PEAR_YR <- gsub(3,2.5/90,fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PEAR_YR <- gsub(4,4/90,fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PEAR_YR <- gsub(5,12/90,fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PEAR_YR <- gsub(6,22/90,fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PEAR_YR <- gsub(7,30/90,fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PEAR_YR <- gsub(8,60/90,fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PEAR_YR <- gsub(9,90/90,fdbd9n$FF_PEAR_YR)
+```
+
+
+```{r}
+fdbd9n$FF_PERS_YR <- gsub(1,0,fdbd9n$FF_PERS_YR)
+fdbd9n$FF_PERS_YR <- gsub(2,1/90,fdbd9n$FF_PERS_YR)
+fdbd9n$FF_PERS_YR <- gsub(3,2.5/90,fdbd9n$FF_PERS_YR)
+fdbd9n$FF_PERS_YR <- gsub(4,4/90,fdbd9n$FF_PERS_YR)
+fdbd9n$FF_PERS_YR <- gsub(5,12/90,fdbd9n$FF_PERS_YR)
+fdbd9n$FF_PERS_YR <- gsub(6,22/90,fdbd9n$FF_PERS_YR)
+fdbd9n$FF_PERS_YR <- gsub(7,30/90,fdbd9n$FF_PERS_YR)
+fdbd9n$FF_PERS_YR <- gsub(8,60/90,fdbd9n$FF_PERS_YR)
+fdbd9n$FF_PERS_YR <- gsub(9,90/90,fdbd9n$FF_PERS_YR)
+```
+
+
+```{r}
+fdbd9n$FF_TANG_YR <- gsub(1,0,fdbd9n$FF_TANG_YR)
+fdbd9n$FF_TANG_YR <- gsub(2,1/90,fdbd9n$FF_TANG_YR)
+fdbd9n$FF_TANG_YR <- gsub(3,2.5/90,fdbd9n$FF_TANG_YR)
+fdbd9n$FF_TANG_YR <- gsub(4,4/90,fdbd9n$FF_TANG_YR)
+fdbd9n$FF_TANG_YR <- gsub(5,12/90,fdbd9n$FF_TANG_YR)
+fdbd9n$FF_TANG_YR <- gsub(6,22/90,fdbd9n$FF_TANG_YR)
+fdbd9n$FF_TANG_YR <- gsub(7,30/90,fdbd9n$FF_TANG_YR)
+fdbd9n$FF_TANG_YR <- gsub(8,60/90,fdbd9n$FF_TANG_YR)
+fdbd9n$FF_TANG_YR <- gsub(9,90/90,fdbd9n$FF_TANG_YR)
+```
+
+
+```{r}
+fdbd9n$FF_BANANA_YR <- gsub(1,0,fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_BANANA_YR <- gsub(2,1/90,fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_BANANA_YR <- gsub(3,2.5/90,fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_BANANA_YR <- gsub(4,4/90,fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_BANANA_YR <- gsub(5,12/90,fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_BANANA_YR <- gsub(6,22/90,fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_BANANA_YR <- gsub(7,30/90,fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_BANANA_YR <- gsub(8,60/90,fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_BANANA_YR <- gsub(9,90/90,fdbd9n$FF_BANANA_YR)
+```
+
+
+```{r}
+fdbd9n$FF_CITRUS_YR <- gsub(1,0,fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_CITRUS_YR <- gsub(2,1/90,fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_CITRUS_YR <- gsub(3,2.5/90,fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_CITRUS_YR <- gsub(4,4/90,fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_CITRUS_YR <- gsub(5,12/90,fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_CITRUS_YR <- gsub(6,22/90,fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_CITRUS_YR <- gsub(7,30/90,fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_CITRUS_YR <- gsub(8,60/90,fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_CITRUS_YR <- gsub(9,90/90,fdbd9n$FF_CITRUS_YR)
+```
+
+
+```{r}
+fdbd9n$FF_KIWI_YR <- gsub(1,0,fdbd9n$FF_KIWI_YR)
+fdbd9n$FF_KIWI_YR <- gsub(2,1/90,fdbd9n$FF_KIWI_YR)
+fdbd9n$FF_KIWI_YR <- gsub(3,2.5/90,fdbd9n$FF_KIWI_YR)
+fdbd9n$FF_KIWI_YR <- gsub(4,4/90,fdbd9n$FF_KIWI_YR)
+fdbd9n$FF_KIWI_YR <- gsub(5,12/90,fdbd9n$FF_KIWI_YR)
+fdbd9n$FF_KIWI_YR <- gsub(6,22/90,fdbd9n$FF_KIWI_YR)
+fdbd9n$FF_KIWI_YR <- gsub(7,30/90,fdbd9n$FF_KIWI_YR)
+fdbd9n$FF_KIWI_YR <- gsub(8,60/90,fdbd9n$FF_KIWI_YR)
+fdbd9n$FF_KIWI_YR <- gsub(9,90/90,fdbd9n$FF_KIWI_YR)
+```
+
+```{r}
+fdbd9n$FF_STRAW_YR <- as.numeric(fdbd9n$FF_STRAW_YR)
+fdbd9n$FF_TOMATO_YR <- as.numeric(fdbd9n$FF_TOMATO_YR)
+fdbd9n$FF_MMELON_YR <- as.numeric(fdbd9n$FF_MMELON_YR)
+fdbd9n$FF_WMELON_YR <- as.numeric(fdbd9n$FF_WMELON_YR)
+fdbd9n$FF_PEACH_YR <- as.numeric(fdbd9n$FF_PEACH_YR)
+fdbd9n$FF_GRAPE_YR <- as.numeric(fdbd9n$FF_GRAPE_YR)
+fdbd9n$FF_APPLE_YR <- as.numeric(fdbd9n$FF_APPLE_YR)
+fdbd9n$FF_PEAR_YR <- as.numeric(fdbd9n$FF_PEAR_YR)
+fdbd9n$FF_PERS_YR <- as.numeric(fdbd9n$FF_PERS_YR)
+fdbd9n$FF_TANG_YR <- as.numeric(fdbd9n$FF_TANG_YR)
+fdbd9n$FF_BANANA_YR <- as.numeric(fdbd9n$FF_BANANA_YR)
+fdbd9n$FF_CITRUS_YR <- as.numeric(fdbd9n$FF_CITRUS_YR)
+fdbd9n$FF_KIWI_YR <- as.numeric(fdbd9n$FF_KIWI_YR)
+
+sfrut <- sum(fdbd9n$FF_STRAW_YR,fdbd9n$FF_TOMATO_YR,fdbd9n$FF_MMELON_YR,fdbd9n$FF_WMELON_YR,fdbd9n$FF_PEACH_YR,fdbd9n$FF_GRAPE_YR,fdbd9n$FF_APPLE_YR,fdbd9n$FF_PEAR_YR,fdbd9n$FF_PERS_YR,fdbd9n$FF_TANG_YR,fdbd9n$FF_BANANA_YR,fdbd9n$FF_CITRUS_YR,fdbd9n$FF_KIWI_YR,na.rm = T)
+sfrut/3351
+s8 <- 90*0.2875
+```
+#음료류
+
+```{r}
+fdbd9n$FF_COFFEE <- gsub(1,0,fdbd9n$FF_COFFEE)
+fdbd9n$FF_COFFEE <- gsub(2,1/90,fdbd9n$FF_COFFEE)
+fdbd9n$FF_COFFEE <- gsub(3,2.5/90,fdbd9n$FF_COFFEE)
+fdbd9n$FF_COFFEE <- gsub(4,4/90,fdbd9n$FF_COFFEE)
+fdbd9n$FF_COFFEE <- gsub(5,12/90,fdbd9n$FF_COFFEE)
+fdbd9n$FF_COFFEE <- gsub(6,22/90,fdbd9n$FF_COFFEE)
+fdbd9n$FF_COFFEE <- gsub(7,30/90,fdbd9n$FF_COFFEE)
+fdbd9n$FF_COFFEE <- gsub(8,60/90,fdbd9n$FF_COFFEE)
+fdbd9n$FF_COFFEE <- gsub(9,90/90,fdbd9n$FF_COFFEE)
+```
+
+
+```{r}
+fdbd9n$FF_TEA <- gsub(1,0,fdbd9n$FF_TEA)
+fdbd9n$FF_TEA <- gsub(2,1/90,fdbd9n$FF_TEA)
+fdbd9n$FF_TEA <- gsub(3,2.5/90,fdbd9n$FF_TEA)
+fdbd9n$FF_TEA <- gsub(4,4/90,fdbd9n$FF_TEA)
+fdbd9n$FF_TEA <- gsub(5,12/90,fdbd9n$FF_TEA)
+fdbd9n$FF_TEA <- gsub(6,22/90,fdbd9n$FF_TEA)
+fdbd9n$FF_TEA <- gsub(7,30/90,fdbd9n$FF_TEA)
+fdbd9n$FF_TEA <- gsub(8,60/90,fdbd9n$FF_TEA)
+fdbd9n$FF_TEA <- gsub(9,90/90,fdbd9n$FF_TEA)
+```
+
+
+```{r}
+fdbd9n$FF_SODA <- gsub(1,0,fdbd9n$FF_SODA)
+fdbd9n$FF_SODA <- gsub(2,1/90,fdbd9n$FF_SODA)
+fdbd9n$FF_SODA <- gsub(3,2.5/90,fdbd9n$FF_SODA)
+fdbd9n$FF_SODA <- gsub(4,4/90,fdbd9n$FF_SODA)
+fdbd9n$FF_SODA <- gsub(5,12/90,fdbd9n$FF_SODA)
+fdbd9n$FF_SODA <- gsub(6,22/90,fdbd9n$FF_SODA)
+fdbd9n$FF_SODA <- gsub(7,30/90,fdbd9n$FF_SODA)
+fdbd9n$FF_SODA <- gsub(8,60/90,fdbd9n$FF_SODA)
+fdbd9n$FF_SODA <- gsub(9,90/90,fdbd9n$FF_SODA)
+```
+
+
+```{r}
+fdbd9n$FF_FJUICE <- gsub(1,0,fdbd9n$FF_FJUICE)
+fdbd9n$FF_FJUICE <- gsub(2,1/90,fdbd9n$FF_FJUICE)
+fdbd9n$FF_FJUICE <- gsub(3,2.5/90,fdbd9n$FF_FJUICE)
+fdbd9n$FF_FJUICE <- gsub(4,4/90,fdbd9n$FF_FJUICE)
+fdbd9n$FF_FJUICE <- gsub(5,12/90,fdbd9n$FF_FJUICE)
+fdbd9n$FF_FJUICE <- gsub(6,22/90,fdbd9n$FF_FJUICE)
+fdbd9n$FF_FJUICE<- gsub(7,30/90,fdbd9n$FF_FJUICE)
+fdbd9n$FF_FJUICE <- gsub(8,60/90,fdbd9n$FF_FJUICE)
+fdbd9n$FF_FJUICE <- gsub(9,90/90,fdbd9n$FF_FJUICE)
+```
+
+
+```{r}
+fdbd9n$FF_GBAVER <- gsub(1,0,fdbd9n$FF_GBAVER)
+fdbd9n$FF_GBAVER <- gsub(2,1/90,fdbd9n$FF_GBAVER)
+fdbd9n$FF_GBAVER <- gsub(3,2.5/90,fdbd9n$FF_GBAVER)
+fdbd9n$FF_GBAVER <- gsub(4,4/90,fdbd9n$FF_GBAVER)
+fdbd9n$FF_GBAVER <- gsub(5,12/90,fdbd9n$FF_GBAVER)
+fdbd9n$FF_GBAVER <- gsub(6,22/90,fdbd9n$FF_GBAVER)
+fdbd9n$FF_GBAVER<- gsub(7,30/90,fdbd9n$FF_GBAVER)
+fdbd9n$FF_GBAVER <- gsub(8,60/90,fdbd9n$FF_GBAVER)
+fdbd9n$FF_GBAVER <- gsub(9,90/90,fdbd9n$FF_GBAVER)
+```
+
+```{r}
+fdbd9n$FF_COFFEE <- as.numeric(fdbd9n$FF_COFFEE)
+fdbd9n$FF_TEA <- as.numeric(fdbd9n$FF_TEA)
+fdbd9n$FF_SODA <- as.numeric(fdbd9n$FF_SODA)
+fdbd9n$FF_FJUICE <- as.numeric(fdbd9n$FF_FJUICE)
+fdbd9n$FF_GBAVER <- as.numeric(fdbd9n$FF_GBAVER)
+
+SVABE <- sum(fdbd9n$FF_COFFEE,fdbd9n$FF_TEA,fdbd9n$FF_SODA,fdbd9n$FF_FJUICE,fdbd9n$FF_GBAVER,na.rm = T)
+SVABE/3351
+s9 <- 90*0.5586
+```
+#간식류
+
+```{r}
+fdbd9n$FF_SNACK <- gsub(1,0,fdbd9n$FF_SNACK)
+fdbd9n$FF_SNACK <- gsub(2,1/90,fdbd9n$FF_SNACK)
+fdbd9n$FF_SNACK <- gsub(3,2.5/90,fdbd9n$FF_SNACK)
+fdbd9n$FF_SNACK <- gsub(4,4/90,fdbd9n$FF_SNACK)
+fdbd9n$FF_SNACK <- gsub(5,12/90,fdbd9n$FF_SNACK)
+fdbd9n$FF_SNACK <- gsub(6,22/90,fdbd9n$FF_SNACK)
+fdbd9n$FF_SNACK<- gsub(7,30/90,fdbd9n$FF_SNACK)
+fdbd9n$FF_SNACK <- gsub(8,60/90,fdbd9n$FF_SNACK)
+fdbd9n$FF_SNACK <- gsub(9,90/90,fdbd9n$FF_SNACK)
+```
+
+
+```{r}
+fdbd9n$FF_COOKIE <- gsub(1,0,fdbd9n$FF_COOKIE)
+fdbd9n$FF_COOKIE <- gsub(2,1/90,fdbd9n$FF_COOKIE)
+fdbd9n$FF_COOKIE <- gsub(3,2.5/90,fdbd9n$FF_COOKIE)
+fdbd9n$FF_COOKIE <- gsub(4,4/90,fdbd9n$FF_COOKIE)
+fdbd9n$FF_COOKIE <- gsub(5,12/90,fdbd9n$FF_COOKIE)
+fdbd9n$FF_COOKIE <- gsub(6,22/90,fdbd9n$FF_COOKIE)
+fdbd9n$FF_COOKIE <- gsub(7,30/90,fdbd9n$FF_COOKIE)
+fdbd9n$FF_COOKIE <- gsub(8,60/90,fdbd9n$FF_COOKIE)
+fdbd9n$FF_COOKIE <- gsub(9,90/90,fdbd9n$FF_COOKIE)
+```
+
+
+```{r}
+fdbd9n$FF_CHOCO <- gsub(1,0,fdbd9n$FF_CHOCO)
+fdbd9n$FF_CHOCO <- gsub(2,1/90,fdbd9n$FF_CHOCO)
+fdbd9n$FF_CHOCO <- gsub(3,2.5/90,fdbd9n$FF_CHOCO)
+fdbd9n$FF_CHOCO <- gsub(4,4/90,fdbd9n$FF_CHOCO)
+fdbd9n$FF_CHOCO <- gsub(5,12/90,fdbd9n$FF_CHOCO)
+fdbd9n$FF_CHOCO <- gsub(6,22/90,fdbd9n$FF_CHOCO)
+fdbd9n$FF_CHOCO <- gsub(7,30/90,fdbd9n$FF_CHOCO)
+fdbd9n$FF_CHOCO <- gsub(8,60/90,fdbd9n$FF_CHOCO)
+fdbd9n$FF_CHOCO <- gsub(9,90/90,fdbd9n$FF_CHOCO)
+```
+
+
+```{r}
+fdbd9n$FF_ICECM <- gsub(1,0,fdbd9n$FF_ICECM)
+fdbd9n$FF_ICECM <- gsub(2,1/90,fdbd9n$FF_ICECM)
+fdbd9n$FF_ICECM <- gsub(3,2.5/90,fdbd9n$FF_ICECM)
+fdbd9n$FF_ICECM <- gsub(4,4/90,fdbd9n$FF_ICECM)
+fdbd9n$FF_ICECM <- gsub(5,12/90,fdbd9n$FF_ICECM)
+fdbd9n$FF_ICECM <- gsub(6,22/90,fdbd9n$FF_ICECM)
+fdbd9n$FF_ICECM <- gsub(7,30/90,fdbd9n$FF_ICECM)
+fdbd9n$FF_ICECM <- gsub(8,60/90,fdbd9n$FF_ICECM)
+fdbd9n$FF_ICECM <- gsub(9,90/90,fdbd9n$FF_ICECM)
+```
+
+
+```{r}
+fdbd9n$FF_SNACK <- as.numeric(fdbd9n$FF_SNACK)
+fdbd9n$FF_COOKIE <- as.numeric(fdbd9n$FF_COOKIE)
+fdbd9n$FF_CHOCO <- as.numeric(fdbd9n$FF_CHOCO)
+fdbd9n$FF_ICECM <- as.numeric(fdbd9n$FF_ICECM)
+
+sdesr <- sum(fdbd9n$FF_SNACK,fdbd9n$FF_COOKIE,fdbd9n$FF_CHOCO,fdbd9n$FF_ICECM,na.rm = T)
+sdesr/3351
+s10 <- 90*0.0881
+```
+#주류
+
+```{r}
+fdbd9n$FF_SOJU <- gsub(1,0,fdbd9n$FF_SOJU)
+fdbd9n$FF_SOJU <- gsub(2,1/90,fdbd9n$FF_SOJU)
+fdbd9n$FF_SOJU <- gsub(3,2.5/90,fdbd9n$FF_SOJU)
+fdbd9n$FF_SOJU <- gsub(4,4/90,fdbd9n$FF_SOJU)
+fdbd9n$FF_SOJU <- gsub(5,12/90,fdbd9n$FF_SOJU)
+fdbd9n$FF_SOJU <- gsub(6,22/90,fdbd9n$FF_SOJU)
+fdbd9n$FF_SOJU <- gsub(7,30/90,fdbd9n$FF_SOJU)
+fdbd9n$FF_SOJU <- gsub(8,60/90,fdbd9n$FF_SOJU)
+fdbd9n$FF_SOJU <- gsub(9,90/90,fdbd9n$FF_SOJU)
+```
+
+```{r}
+fdbd9n$FF_BEER <- gsub(1,0,fdbd9n$FF_BEER)
+fdbd9n$FF_BEER<- gsub(2,1/90,fdbd9n$FF_BEER)
+fdbd9n$FF_BEER <- gsub(3,2.5/90,fdbd9n$FF_BEER)
+fdbd9n$FF_BEER <- gsub(4,4/90,fdbd9n$FF_BEER)
+fdbd9n$FF_BEER <- gsub(5,12/90,fdbd9n$FF_BEER)
+fdbd9n$FF_BEER <- gsub(6,22/90,fdbd9n$FF_BEER)
+fdbd9n$FF_BEER <- gsub(7,30/90,fdbd9n$FF_BEER)
+fdbd9n$FF_BEER <- gsub(8,60/90,fdbd9n$FF_BEER)
+fdbd9n$FF_BEER <- gsub(9,90/90,fdbd9n$FF_BEER)
+```
+
+
+```{r}
+fdbd9n$FF_RWINE <- gsub(1,0,fdbd9n$FF_RWINE)
+fdbd9n$FF_RWINE <- gsub(2,1/90,fdbd9n$FF_RWINE)
+fdbd9n$FF_RWINE <- gsub(3,2.5/90,fdbd9n$FF_RWINE)
+fdbd9n$FF_RWINE <- gsub(4,4/90,fdbd9n$FF_RWINE)
+fdbd9n$FF_RWINE <- gsub(5,12/90,fdbd9n$FF_RWINE)
+fdbd9n$FF_RWINE <- gsub(6,22/90,fdbd9n$FF_RWINE)
+fdbd9n$FF_RWINE <- gsub(7,30/90,fdbd9n$FF_RWINE)
+fdbd9n$FF_RWINE <- gsub(8,60/90,fdbd9n$FF_RWINE)
+fdbd9n$FF_RWINE <- gsub(9,90/90,fdbd9n$FF_RWINE)
+```
+
+```{r}
+fdbd9n$FF_SOJU <- as.numeric(fdbd9n$FF_SOJU)
+fdbd9n$FF_BEER <- as.numeric(fdbd9n$FF_BEER)
+fdbd9n$FF_RWINE <- as.numeric(fdbd9n$FF_RWINE)
+
+sdirn <- sum(fdbd9n$FF_SOJU,fdbd9n$FF_BEER,fdbd9n$FF_RWINE,na.rm = T)
+sdirn/3351
+s11 <- 90*0.0644
+```
+
+
+```{r}
+fd <- c("밥,국수류","빵류","찌개,국류","육류","해산물","채소류","유제품","과일류","음료류","간식류","주류")
+fdnb <- c(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11)
+fdnb <- as.numeric(fdnb)
+fdn <- data.frame(fd,fdnb)
+colnames(fdn) <- c("food","number")
+
+library(ggplot2)
+
+g0 <- ggplot(data = fdn,
+             mapping = aes(x = fdn$food, y = fdn$number)) +
+             xlab("음식종류")+
+             ylab("섭취끼니 수")+
+             ggtitle("음식종류 섭취끼니 수")+
+  theme(plot.title=element_text( face="bold", size=30, vjust=2))+
+  theme_classic()
+
+g1 <- g0 + 
+  geom_bar(stat = "identity",fill = "#0099cc")+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+g1
+```
+
+```{r}
+boxplot(fbn$)
+```
+

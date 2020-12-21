@@ -1,0 +1,15 @@
+---
+title: "1일영양섭취기준"
+author: "20173250 정경현"
+date: "2018년 12월 13일"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+```
+
